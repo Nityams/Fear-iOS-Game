@@ -112,10 +112,10 @@
 			isa = PBXGroup;
 			children = (
 				C8D00E151D3D4C4D00DC3FEB /* SKS */,
-				C8D00DD51D3D392400DC3FEB /* AppDelegate.swift */,
 				C8D00DD91D3D392400DC3FEB /* GameScene.swift */,
 				C8D00DDB1D3D392400DC3FEB /* GameViewController.swift */,
 				C8D00DDD1D3D392400DC3FEB /* Main.storyboard */,
+				C8D00DD51D3D392400DC3FEB /* AppDelegate.swift */,
 				C8D00DE01D3D392400DC3FEB /* Assets.xcassets */,
 				C8D00DE21D3D392400DC3FEB /* LaunchScreen.storyboard */,
 				C8D00DE51D3D392400DC3FEB /* Info.plist */,
@@ -525,6 +525,7 @@
 				C8D00E001D3D392400DC3FEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C8D00E011D3D392400DC3FEB /* Build configuration list for PBXNativeTarget "RunAwayTests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +534,7 @@
 				C8D00E031D3D392400DC3FEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C8D00E041D3D392400DC3FEB /* Build configuration list for PBXNativeTarget "RunAwayUITests" */ = {
 			isa = XCConfigurationList;
@@ -541,6 +543,7 @@
 				C8D00E061D3D392400DC3FEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

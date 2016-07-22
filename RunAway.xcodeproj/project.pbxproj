@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		C80706D51D3EC341002FED0A /* Boost.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80706D41D3EC341002FED0A /* Boost.sks */; };
 		C80706D71D403CD6002FED0A /* TempLabel.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80706D61D403CD6002FED0A /* TempLabel.sks */; };
+		C80706D91D415619002FED0A /* Potions.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80706D81D415619002FED0A /* Potions.sks */; };
 		C881D97E1D3E99A700038702 /* Ghost.sks in Resources */ = {isa = PBXBuildFile; fileRef = C881D97D1D3E99A700038702 /* Ghost.sks */; };
-		C894A4D31D3D87780008462D /* Monster.sks in Resources */ = {isa = PBXBuildFile; fileRef = C894A4D21D3D87780008462D /* Monster.sks */; };
 		C8D00DD61D3D392400DC3FEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D00DD51D3D392400DC3FEB /* AppDelegate.swift */; };
 		C8D00DD81D3D392400DC3FEB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8D00DD71D3D392400DC3FEB /* GameScene.sks */; };
 		C8D00DDA1D3D392400DC3FEB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D00DD91D3D392400DC3FEB /* GameScene.swift */; };
@@ -47,8 +47,8 @@
 /* Begin PBXFileReference section */
 		C80706D41D3EC341002FED0A /* Boost.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Boost.sks; sourceTree = "<group>"; };
 		C80706D61D403CD6002FED0A /* TempLabel.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TempLabel.sks; sourceTree = "<group>"; };
+		C80706D81D415619002FED0A /* Potions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Potions.sks; path = ../Potions.sks; sourceTree = "<group>"; };
 		C881D97D1D3E99A700038702 /* Ghost.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Ghost.sks; sourceTree = "<group>"; };
-		C894A4D21D3D87780008462D /* Monster.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Monster.sks; sourceTree = "<group>"; };
 		C8D00DD21D3D392400DC3FEB /* RunAway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunAway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D00DD51D3D392400DC3FEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8D00DD71D3D392400DC3FEB /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -152,16 +152,16 @@
 		C8D00E151D3D4C4D00DC3FEB /* SKS */ = {
 			isa = PBXGroup;
 			children = (
+				C80706D81D415619002FED0A /* Potions.sks */,
 				C8D00E0B1D3D4A4F00DC3FEB /* Hero.sks */,
-				C894A4D21D3D87780008462D /* Monster.sks */,
 				C80706D41D3EC341002FED0A /* Boost.sks */,
 				C881D97D1D3E99A700038702 /* Ghost.sks */,
 				C8D00E0D1D3D4B7800DC3FEB /* Box1.sks */,
 				C8D00E0F1D3D4BAC00DC3FEB /* Box2.sks */,
 				C8D00E111D3D4BDC00DC3FEB /* Lantern.sks */,
 				C8D00E131D3D4C1400DC3FEB /* Pit.sks */,
-				C8D00DD71D3D392400DC3FEB /* GameScene.sks */,
 				C80706D61D403CD6002FED0A /* TempLabel.sks */,
+				C8D00DD71D3D392400DC3FEB /* GameScene.sks */,
 			);
 			name = SKS;
 			sourceTree = "<group>";
@@ -273,8 +273,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C894A4D31D3D87780008462D /* Monster.sks in Resources */,
 				C8D00E141D3D4C1400DC3FEB /* Pit.sks in Resources */,
+				C80706D91D415619002FED0A /* Potions.sks in Resources */,
 				C8D00E101D3D4BAC00DC3FEB /* Box2.sks in Resources */,
 				C80706D51D3EC341002FED0A /* Boost.sks in Resources */,
 				C8D00DD81D3D392400DC3FEB /* GameScene.sks in Resources */,

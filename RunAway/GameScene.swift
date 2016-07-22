@@ -28,12 +28,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var ghostSpawnTimer: CFTimeInterval = -5
     var boostSpawnTimer: CFTimeInterval = 0
     
+    var originalGravity:CGFloat!
+    
     let ghostOriginalPos:CGPoint = CGPoint(x: -54, y: 89.963)
     
-    var nodeObstacle: SKNode!
-    var nodeLantern: SKNode!
-    
     var myBox:SKSpriteNode!
+    
+    var potion:Int = 0
+  
+   // var superLanternRectangle: CGRect
+    var lamp1:SKNode!
+    var lamp2:SKNode!
+    var lamp3:SKNode!
+    var lamp4:SKNode!
     
     var scrollSpeed:CGFloat = 230
     var backSpeed: CGFloat = 0
@@ -42,13 +49,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var fixedDelta: CFTimeInterval = 1.0/60.0  // 60 FPS
     var lastLanternTime: CFTimeInterval = 0
     
-    var score: Int = 0
+    var score: Int = 1
     var scoreCounter = 0
+    var scoreLabel:SKLabelNode!
+    var speedLabel: SKLabelNode!
    // var creepIn:SKAction;
     var isAtGround: Bool = true
     var tempLabel: SKLabelNode?
-    
-    var ambientColor: UIColor?
+  //  var ambientColor: UIColor?
     
     override func didMoveToView(view: SKView)
     {
@@ -57,12 +65,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         groundScroll = self.childNodeWithName("groundScroll")
         cloudScroll = self.childNodeWithName("cloudScroll")
         backScroll = self.childNodeWithName("backScroll")
-        nodeLantern = self.childNodeWithName("nodeLantern")
-        nodeObstacle = self.childNodeWithName("nodeObstacle")
+        
+        lamp1 = self.childNodeWithName("lamp1")
+        lamp2 = self.childNodeWithName("lamp2")
+        lamp3 = self.childNodeWithName("lamp3")
+        lamp4 = self.childNodeWithName("lamp4")
+
         hero = self.childNodeWithName("//hero") as! SKSpriteNode
         ghost = self.childNodeWithName("//ghost") as! SKSpriteNode
+        scoreLabel = self.childNodeWithName("scoreLabel") as! SKLabelNode
+        speedLabel = self.childNodeWithName("speedLabel") as! SKLabelNode
+       
         
-        ambientColor = UIColor.darkGrayColor()
+        
+        
+    //    ambientColor = UIColor.darkGrayColor()
         initSprite()
         initLight()
         
@@ -77,16 +94,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
     {
-//        let changeColorAction = SKAction.colorizeWithColor(SKColor.blueColor(), colorBlendFactor: 1.0, duration: 0.5)
-//        self.runAction(changeColorAction)
-        heroJump()
+        //        let changeColorAction = SKAction.colorizeWithColor(SKColor.blueColor(), colorBlendFactor: 1.0, duration: 0.5)
+        //        self.runAction(changeColorAction)
+        
+        //        for touch in touches{
+        //            if touch ==
+        
+        //          superLanternActivate = false
+        //}
+        for touch in touches
+        {
+            if gameState == .Active
+            {
+                if potion >= 12
+                {
+                    let pt = touch.locationInNode(self)
+                    if(nodeAtPoint(pt).name == "lamp1"||nodeAtPoint(pt).name == "lamp2"||nodeAtPoint(pt).name == "lamp3"||nodeAtPoint(pt).name == "lamp4")
+                    {
+                        print("Super Lanter Power up")
+                        heroPowerUp()
+                        potion = 0
+                    }
+                }
+                heroJump()
+            }
+        }
     }
     
     func heroJump()
     {
         if(isAtGround)
         {
-            hero.physicsBody?.applyImpulse(CGVectorMake(0, 13.5))
+            hero.physicsBody?.applyImpulse(CGVectorMake(0, 14.5))
           //  print(hero.position.x)
             hero.paused = true;
             isAtGround = false
@@ -96,6 +135,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: CFTimeInterval)
     {
         if gameState == .GameOver{
+            hero.removeAllActions()
+            groundScroll.removeAllActions()
+            cloudScroll.removeAllActions()
+            backScroll.removeAllActions()
             hero.removeFromParent()
             
             let resourchPath = NSBundle.mainBundle().pathForResource("TempLabel", ofType: "sks")
@@ -103,19 +146,56 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             box.position = CGPoint(x: 100, y: 100)
             self.addChild(box)
 
-            
+            return
         }
         if gameState == .Active{
-            if hero.position.x < -200
+            
+            if potion >= 12
+            {
+                lamp1.zPosition = 3
+                
+            } else if potion >= 9
+            {
+                lamp2.zPosition = 3
+            } else if potion >= 6
+            {
+                lamp3.zPosition = 3
+            } else if potion >= 3
+            {
+                lamp4.zPosition = 3
+            }else
+            {
+                lamp1.zPosition = -1
+                lamp2.zPosition = -1
+                lamp3.zPosition = -1
+                lamp4.zPosition = -1
+                
+            }
+            
+        
+            
+            if score % 150 == 0
+            {
+                print(scrollSpeed)
+                scrollSpeed += 65
+                print(scrollSpeed)
+                print("")
+                score += 1
+            }
+            scoreLabel.text = String(score)
+            speedLabel.text = String (scrollSpeed)   // printing speed
+            
+        //    if hero.position.x < -200
+                if hero.parent?.position.x < 0
             {
                 gameState = .GameOver
                 return;
             }
             
-            //  print("Ghost timer : \(ghostSpawnTimer)")
-            if hero.position.x > 30
+            //   if hero.position.x > 30
+            if hero.parent?.position.x > 300 // make this dynamic screen size
             {
-                let heroLimit =  SKAction.moveToX(hero.position.x - 2, duration: 2)
+                let heroLimit =  SKAction.moveToX((hero.parent?.position.x)! - 100, duration: 1)
                 hero.runAction(heroLimit)
             }
             
@@ -179,32 +259,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if nodeA.name == "lantern" || nodeB.name == "lantern"
         {
-            
-            // add effects of bright glow
-           
-            /* Effects #1 */
-            // world pause
-            hero.paused = true
-            hero.physicsBody?.dynamic = false
-            hero.physicsBody?.affectedByGravity = false
-            gameState = .LanternGlow
-            
-            
-            let pauseTime = SKAction.waitForDuration(2)
-            let unpause = SKAction.performSelector(#selector(resume), onTarget: self)
-            let stepSequence = SKAction.sequence([pauseTime, unpause])
-            self.runAction(stepSequence)
-            
-            /* Effects #2 */
-            ghostReset()
-            
-            /* Effects #3 */
-            obstacleDisappear()
-            
-
-            
-            heroBoost()
-            
+            heroPowerUp()                       // powerUp Effects
+        
             if  nodeA.name != "hero"
             {
                 nodeA.removeFromParent()
@@ -227,6 +283,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 nodeB.removeFromParent()
             }
         }
+        
+        if nodeA.name == "potion" || nodeB.name == "potion"
+        {
+            potion += 1
+
+            print("potion collected: \(potion)")
+            
+            if  nodeA.name != "hero"
+            {
+                nodeA.removeFromParent()
+            }
+            else
+            {
+                nodeB.removeFromParent()
+            }
+
+        }
+        
         if nodeA.name == "ghost" || nodeB.name == "ghost"
         {
             gameState = .GameOver
@@ -234,22 +308,65 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
-    
+    /*
+     @param: that decideds the reward brightness of the gameplay
+    */
+    func heroPowerUp()
+    {
+        
+        // add effects of bright glow
+        // world brightness = current.brightness + 30, not fully bright, i.e done by superLantern
+        /* Effects #1 */
+        // world pause
+        hero.paused = true
+        hero.physicsBody?.dynamic = false
+        hero.physicsBody?.affectedByGravity = false
+        
+        gameState = .LanternGlow
+        
+        
+        let pauseTime = SKAction.waitForDuration(2)
+        let unpause = SKAction.performSelector(#selector(resume), onTarget: self)
+        let stepSequence = SKAction.sequence([pauseTime, unpause])
+        self.runAction(stepSequence)
+        
+        
+        /* Effects #2 */
+        ghostReset()
+        
+        /* Effects #3 */
+        obstacleDisappear()
+        
+        heroBoost()
+
+    }
     func resume()
     {
         hero.paused = false
         hero.physicsBody?.dynamic = true
         hero.physicsBody?.affectedByGravity = true
+        if hero.parent?.position.x < 200
+        {
+            let heroLimit =  SKAction.moveToX((hero.parent?.position.x)! + 50, duration: 1)
+            hero.runAction(heroLimit)
+        }
+      //  physicsWorld.gravity.dx = originalGravity
         gameState = .Active
     }
     
     func heroBoost() {
-        
-        if hero.position.x < 15
-        {
-            let heroLimit =  SKAction.moveToX(hero.position.x + 2, duration: 2)
-            hero.runAction(heroLimit)
-        }
+        print("hero position:\(hero.parent?.position.x)")
+//        if hero.parent?.position.x < 200
+//        {
+//            print("activate boost")
+//            
+//            let heroLimit =  SKAction.moveToX((hero.parent?.position.x)! + 100, duration: 2)
+//         //   hero.physicsBody?.dynamic = true
+//            hero.runAction(heroLimit)
+////         //  hero.position.x = 15
+//            
+//  //          hero.physicsBody?.applyImpulse(CGVectorMake(1, 0))
+       // }
  
     }
     func ghostReset()
@@ -289,7 +406,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.runAction(disappearSequence)
             }
         }
-        spawnTimer = 0
+        //spawnTimer = 0
         pitSpawnTimer = 5
         lanternSpawnTimer = 0
     }
@@ -311,6 +428,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //  print("Ghost After Move \(ghost.position.x)")
             ghostSpawnTimer = 0
         }
+
+/*
         if pitSpawnTimer > 17     //pit Spawn
         {
             let resourchPath = NSBundle.mainBundle().pathForResource("Pit", ofType: "sks")
@@ -322,24 +441,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
             
         }
-        
-        if spawnTimer > 3.5     //monster spawn
+ */
+        if spawnTimer > 3     //potions spawn
         {
-            let resourchPath = NSBundle.mainBundle().pathForResource("Monster", ofType: "sks")
+            let resourchPath = NSBundle.mainBundle().pathForResource("Potions", ofType: "sks")
             let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
-            box.position = self.convertPoint(CGPoint(x: 600, y: 65), toNode: groundScroll)
+            box.position = self.convertPoint(CGPoint(x: 600, y: 176), toNode: groundScroll)
             groundScroll.addChild(box)
-            //    print("Monster")
             spawnTimer = 0
             return
             
         }
+ 
+        // add potions here and pops out after x time
+        //more potions then lanterns
         
         if lanternSpawnTimer > 13   //lantern spawn
         {
             let resourchPath = NSBundle.mainBundle().pathForResource("Lantern", ofType: "sks")
             let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
-            box.position = self.convertPoint(CGPoint(x: 600, y: 176), toNode: groundScroll)
+            let randomNumber = Int(arc4random_uniform(UInt32(50)))
+            box.position = self.convertPoint(CGPoint(x: 600 + randomNumber, y: 176), toNode: groundScroll)
             groundScroll.addChild(box)
             //    print("Lantern")
             lanternSpawnTimer = 0
@@ -358,7 +480,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         let resourchPath = NSBundle.mainBundle().pathForResource("Box2", ofType: "sks")
         let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
-        box.position = self.convertPoint(CGPoint(x: 600, y: 66), toNode: groundScroll)
+        box.position = self.convertPoint(CGPoint(x: 600, y: 70), toNode: groundScroll)
         groundScroll.addChild(box)
     }
     
@@ -366,7 +488,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         let resourchPath = NSBundle.mainBundle().pathForResource("Box1", ofType: "sks")
         let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
-        box.position = self.convertPoint(CGPoint(x: 600, y: 66), toNode: groundScroll)
+        box.position = self.convertPoint(CGPoint(x: 600, y: 70), toNode: groundScroll)
         groundScroll.addChild(box)
     }
     

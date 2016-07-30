@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C806411A1D47F3F600DF1DED /* Character1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80641191D47F3F600DF1DED /* Character1.sks */; };
+		C806411D1D47F90100DF1DED /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = C806411B1D47F90100DF1DED /* Fire.sks */; };
+		C806411E1D47F90100DF1DED /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = C806411C1D47F90100DF1DED /* spark.png */; };
 		C80706D51D3EC341002FED0A /* Boost.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80706D41D3EC341002FED0A /* Boost.sks */; };
 		C80706D71D403CD6002FED0A /* TempLabel.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80706D61D403CD6002FED0A /* TempLabel.sks */; };
-		C80706D91D415619002FED0A /* Potions.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80706D81D415619002FED0A /* Potions.sks */; };
-		C80BE1091D428C1700064567 /* Box3.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80BE1081D428C1700064567 /* Box3.sks */; };
 		C80BE10B1D42D17400064567 /* Box4.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80BE10A1D42D17400064567 /* Box4.sks */; };
 		C881D97E1D3E99A700038702 /* Ghost.sks in Resources */ = {isa = PBXBuildFile; fileRef = C881D97D1D3E99A700038702 /* Ghost.sks */; };
+		C8BCEFE61D49947C008F87F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8BCEFE51D49947C008F87F0 /* Assets.xcassets */; };
 		C8D00DD61D3D392400DC3FEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D00DD51D3D392400DC3FEB /* AppDelegate.swift */; };
 		C8D00DD81D3D392400DC3FEB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8D00DD71D3D392400DC3FEB /* GameScene.sks */; };
 		C8D00DDA1D3D392400DC3FEB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D00DD91D3D392400DC3FEB /* GameScene.swift */; };
 		C8D00DDC1D3D392400DC3FEB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D00DDB1D3D392400DC3FEB /* GameViewController.swift */; };
 		C8D00DDF1D3D392400DC3FEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D00DDD1D3D392400DC3FEB /* Main.storyboard */; };
-		C8D00DE11D3D392400DC3FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8D00DE01D3D392400DC3FEB /* Assets.xcassets */; };
 		C8D00DE41D3D392400DC3FEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D00DE21D3D392400DC3FEB /* LaunchScreen.storyboard */; };
 		C8D00DEF1D3D392400DC3FEB /* RunAwayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D00DEE1D3D392400DC3FEB /* RunAwayTests.swift */; };
 		C8D00DFA1D3D392400DC3FEB /* RunAwayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D00DF91D3D392400DC3FEB /* RunAwayUITests.swift */; };
-		C8D00E0C1D3D4A4F00DC3FEB /* Hero.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8D00E0B1D3D4A4F00DC3FEB /* Hero.sks */; };
 		C8D00E0E1D3D4B7800DC3FEB /* Box1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8D00E0D1D3D4B7800DC3FEB /* Box1.sks */; };
 		C8D00E101D3D4BAC00DC3FEB /* Box2.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8D00E0F1D3D4BAC00DC3FEB /* Box2.sks */; };
 		C8D00E121D3D4BDC00DC3FEB /* Lantern.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8D00E111D3D4BDC00DC3FEB /* Lantern.sks */; };
-		C8D00E141D3D4C1400DC3FEB /* Pit.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8D00E131D3D4C1400DC3FEB /* Pit.sks */; };
+		C8E0C6061D46BAD00078EE8A /* Box1_dummy.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8E0C6051D46BAD00078EE8A /* Box1_dummy.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,19 +47,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C80641191D47F3F600DF1DED /* Character1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Character1.sks; sourceTree = "<group>"; };
+		C806411B1D47F90100DF1DED /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
+		C806411C1D47F90100DF1DED /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		C80706D41D3EC341002FED0A /* Boost.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Boost.sks; sourceTree = "<group>"; };
 		C80706D61D403CD6002FED0A /* TempLabel.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TempLabel.sks; sourceTree = "<group>"; };
-		C80706D81D415619002FED0A /* Potions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Potions.sks; path = ../Potions.sks; sourceTree = "<group>"; };
-		C80BE1081D428C1700064567 /* Box3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Box3.sks; sourceTree = "<group>"; };
 		C80BE10A1D42D17400064567 /* Box4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Box4.sks; sourceTree = "<group>"; };
 		C881D97D1D3E99A700038702 /* Ghost.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Ghost.sks; sourceTree = "<group>"; };
+		C8BCEFE51D49947C008F87F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8D00DD21D3D392400DC3FEB /* RunAway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunAway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D00DD51D3D392400DC3FEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8D00DD71D3D392400DC3FEB /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		C8D00DD91D3D392400DC3FEB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		C8D00DDB1D3D392400DC3FEB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		C8D00DDE1D3D392400DC3FEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C8D00DE01D3D392400DC3FEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8D00DE31D3D392400DC3FEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8D00DE51D3D392400DC3FEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8D00DEA1D3D392400DC3FEB /* RunAwayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunAwayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,11 +69,10 @@
 		C8D00DF51D3D392400DC3FEB /* RunAwayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunAwayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D00DF91D3D392400DC3FEB /* RunAwayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunAwayUITests.swift; sourceTree = "<group>"; };
 		C8D00DFB1D3D392400DC3FEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C8D00E0B1D3D4A4F00DC3FEB /* Hero.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Hero.sks; path = ../Hero.sks; sourceTree = "<group>"; };
 		C8D00E0D1D3D4B7800DC3FEB /* Box1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Box1.sks; sourceTree = "<group>"; };
 		C8D00E0F1D3D4BAC00DC3FEB /* Box2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Box2.sks; sourceTree = "<group>"; };
 		C8D00E111D3D4BDC00DC3FEB /* Lantern.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Lantern.sks; sourceTree = "<group>"; };
-		C8D00E131D3D4C1400DC3FEB /* Pit.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Pit.sks; sourceTree = "<group>"; };
+		C8E0C6051D46BAD00078EE8A /* Box1_dummy.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Box1_dummy.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,12 +125,12 @@
 			children = (
 				C8D00E151D3D4C4D00DC3FEB /* SKS */,
 				C8D00DD91D3D392400DC3FEB /* GameScene.swift */,
-				C8D00DDB1D3D392400DC3FEB /* GameViewController.swift */,
 				C8D00DDD1D3D392400DC3FEB /* Main.storyboard */,
 				C8D00DD51D3D392400DC3FEB /* AppDelegate.swift */,
-				C8D00DE01D3D392400DC3FEB /* Assets.xcassets */,
 				C8D00DE21D3D392400DC3FEB /* LaunchScreen.storyboard */,
 				C8D00DE51D3D392400DC3FEB /* Info.plist */,
+				C8BCEFE51D49947C008F87F0 /* Assets.xcassets */,
+				C8D00DDB1D3D392400DC3FEB /* GameViewController.swift */,
 			);
 			path = RunAway;
 			sourceTree = "<group>";
@@ -156,16 +156,16 @@
 		C8D00E151D3D4C4D00DC3FEB /* SKS */ = {
 			isa = PBXGroup;
 			children = (
-				C80706D81D415619002FED0A /* Potions.sks */,
-				C8D00E0B1D3D4A4F00DC3FEB /* Hero.sks */,
 				C80706D41D3EC341002FED0A /* Boost.sks */,
+				C806411B1D47F90100DF1DED /* Fire.sks */,
+				C806411C1D47F90100DF1DED /* spark.png */,
+				C80641191D47F3F600DF1DED /* Character1.sks */,
 				C881D97D1D3E99A700038702 /* Ghost.sks */,
 				C8D00E0D1D3D4B7800DC3FEB /* Box1.sks */,
+				C8E0C6051D46BAD00078EE8A /* Box1_dummy.sks */,
 				C8D00E0F1D3D4BAC00DC3FEB /* Box2.sks */,
-				C80BE1081D428C1700064567 /* Box3.sks */,
 				C8D00E111D3D4BDC00DC3FEB /* Lantern.sks */,
 				C80BE10A1D42D17400064567 /* Box4.sks */,
-				C8D00E131D3D4C1400DC3FEB /* Pit.sks */,
 				C80706D61D403CD6002FED0A /* TempLabel.sks */,
 				C8D00DD71D3D392400DC3FEB /* GameScene.sks */,
 			);
@@ -279,19 +279,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8D00E141D3D4C1400DC3FEB /* Pit.sks in Resources */,
-				C80706D91D415619002FED0A /* Potions.sks in Resources */,
+				C806411E1D47F90100DF1DED /* spark.png in Resources */,
 				C8D00E101D3D4BAC00DC3FEB /* Box2.sks in Resources */,
+				C806411A1D47F3F600DF1DED /* Character1.sks in Resources */,
 				C80BE10B1D42D17400064567 /* Box4.sks in Resources */,
 				C80706D51D3EC341002FED0A /* Boost.sks in Resources */,
+				C8BCEFE61D49947C008F87F0 /* Assets.xcassets in Resources */,
 				C8D00DD81D3D392400DC3FEB /* GameScene.sks in Resources */,
 				C8D00DE41D3D392400DC3FEB /* LaunchScreen.storyboard in Resources */,
-				C8D00DE11D3D392400DC3FEB /* Assets.xcassets in Resources */,
 				C881D97E1D3E99A700038702 /* Ghost.sks in Resources */,
+				C8E0C6061D46BAD00078EE8A /* Box1_dummy.sks in Resources */,
 				C8D00E0E1D3D4B7800DC3FEB /* Box1.sks in Resources */,
-				C8D00E0C1D3D4A4F00DC3FEB /* Hero.sks in Resources */,
 				C8D00E121D3D4BDC00DC3FEB /* Lantern.sks in Resources */,
-				C80BE1091D428C1700064567 /* Box3.sks in Resources */,
+				C806411D1D47F90100DF1DED /* Fire.sks in Resources */,
 				C8D00DDF1D3D392400DC3FEB /* Main.storyboard in Resources */,
 				C80706D71D403CD6002FED0A /* TempLabel.sks in Resources */,
 			);

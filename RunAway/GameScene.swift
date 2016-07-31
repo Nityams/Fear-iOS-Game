@@ -23,21 +23,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var ghost: SKSpriteNode!
     
     // background effect
-    var bnw1: SKSpriteNode!
-    var bnw2: SKSpriteNode!
-    var bnw3: SKSpriteNode!
-    var bnw4: SKSpriteNode!
-    var bnw5: SKSpriteNode!
-    var bnw6: SKSpriteNode!
-    var bnw7: SKSpriteNode!
-    var bnw8: SKSpriteNode!
+    var backPart1: SKSpriteNode!
+    var backPart2: SKSpriteNode!
+    var backPart3: SKSpriteNode!
+    var backPart4: SKSpriteNode!
+    var backPart5: SKSpriteNode!
+    var backPart6: SKSpriteNode!
+    var backPart7: SKSpriteNode!
+    var backPart8: SKSpriteNode!
+    var backPart9: SKSpriteNode!
+    var backPart10: SKSpriteNode!
+    var backPart11: SKSpriteNode!
+    var backPart12: SKSpriteNode!
+    var backPart13: SKSpriteNode!
+    var backPart14: SKSpriteNode!
     
     var potionSpawnTimer: CFTimeInterval = 0
     var pitSpawnTimer: CFTimeInterval = 0
     var lanternSpawnTimer: CFTimeInterval = 0
     var ghostSpawnTimer: CFTimeInterval = -5
     var boostSpawnTimer: CFTimeInterval = 0
-    var generalLanternTimeCounter:CFTimeInterval = 13
+    var generalLanternTimeCounter:CFTimeInterval = 19
     
     var originalGravity:CGFloat!
     
@@ -66,10 +72,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreCounter = 0
     var scoreLabel:SKLabelNode!
     var speedLabel: SKLabelNode!
-   
+    
     var isAtGround: Bool = true
     var tempLabel: SKLabelNode?
     
+    var gameReset:SKAction!
     //  var ambientColor: UIColor?
     
     override func didMoveToView(view: SKView)
@@ -94,17 +101,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         speedLabel = self.childNodeWithName("speedLabel") as! SKLabelNode
         
         // background color effects
-        bnw1 = self.childNodeWithName("bnw1") as! SKSpriteNode
-        bnw2 = self.childNodeWithName("bnw2") as! SKSpriteNode
-        bnw3 = self.childNodeWithName("bnw3") as! SKSpriteNode
-        bnw3.zPosition = 0
-        bnw4 = self.childNodeWithName("bnw4") as! SKSpriteNode
-        bnw5 = self.childNodeWithName("bnw5") as! SKSpriteNode
-        bnw5.zPosition = 0
-        bnw6 = self.childNodeWithName("bnw6") as! SKSpriteNode
-        bnw7 = self.childNodeWithName("bnw7") as! SKSpriteNode
-        bnw8 = self.childNodeWithName("bnw8") as! SKSpriteNode
-        
+        backPart1 = self.childNodeWithName("part1") as! SKSpriteNode
+        backPart2 = self.childNodeWithName("part2") as! SKSpriteNode
+        backPart3 = self.childNodeWithName("part3") as! SKSpriteNode
+        backPart4 = self.childNodeWithName("part4") as! SKSpriteNode
+        backPart5 = self.childNodeWithName("part5") as! SKSpriteNode
+        backPart6 = self.childNodeWithName("part6") as! SKSpriteNode
+        backPart7 = self.childNodeWithName("part7") as! SKSpriteNode
+        backPart8 = self.childNodeWithName("part8") as! SKSpriteNode
+        backPart9 = self.childNodeWithName("part9") as! SKSpriteNode
+        backPart10 = self.childNodeWithName("part10") as! SKSpriteNode
+        backPart11 = self.childNodeWithName("part11") as! SKSpriteNode
+        backPart12 = self.childNodeWithName("part12") as! SKSpriteNode
+        backPart13 = self.childNodeWithName("part13") as! SKSpriteNode
+        backPart14 = self.childNodeWithName("part14") as! SKSpriteNode
+//        
+//        backPart1.zPosition = 0
+//        backPart2.zPosition = 0
+//        backPart3.zPosition = 0
+//        backPart4.zPosition = 0
+//        backPart5.zPosition = 0
+//        backPart6.zPosition = 0
+//        backPart7.zPosition = 0
+//        backPart8.zPosition = 0
         
         let swipeRight:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("swipedRight:"))
         swipeRight.direction = .Right
@@ -122,7 +141,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         swipeDown.direction = .Down
         view.addGestureRecognizer(swipeDown)
         
-        
+         gameReset = SKAction.runBlock({
+            let skView = self.view as SKView!
+            
+            let scene = GameScene(fileNamed: "GameScene") as GameScene!
+         //   scene.highscore = self.score
+            scene.scaleMode = .AspectFit
+            
+            skView.showsPhysics = true
+            skView.showsDrawCount = true
+            skView.showsFPS = true
+            
+            skView.presentScene(scene)
+        })
         //    ambientColor = UIColor.darkGrayColor()
         initSprite()
         initLight()
@@ -148,7 +179,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func swipedDown(sender:UISwipeGestureRecognizer)
-        {
+    {
         heroSlide()
         print("Down swipped")
     }
@@ -163,27 +194,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func heroSlide()
     {
-//        let mytexture = SKTexture(imageNamed: "punkSlide")
-//        let slideAction = SKAction.animateWithNormalTextures([mytexture], timePerFrame: 1.5)
-//        let restoreAction = SKAction.performSelector(#selector(restoreActions), onTarget: self)
-//        let similation = SKAction.sequence([slideAction, restoreAction])
-//        hero.runAction(similation, withKey: "")
-    
-        
         hero.paused = true
         hero.texture =  SKTexture(imageNamed: "punkSlide")
         hero.xScale = 0.4
         hero.yScale = 0.4
         
-      //  hero.runAction(slideAction, withKey: "slideAction")
-       
-//        hero.runAction(SKAction.animateWithTextures([mytexture], timePerFrame: 2), withkey)
-       
-      //  hero.paused = true
-//        hero.xScale = 1
-//        hero.yScale = 1
-        
-        // texture  not working
         print("hero texture changed")
     }
     
@@ -205,8 +220,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         for touch in touches
         {
+            if gameState == .GameOver
+            {
+                self.runAction(gameReset)
+            }
+            
             if gameState == .Active
             {
+                heroPowerUp()
+                
                 if potion >= 12
                 {
                     let pt = touch.locationInNode(self)
@@ -226,17 +248,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         if(isAtGround)
         {
-            // never ending decrease  in speed after 300
-//            if scrollSpeed > 300
-//            {
-//                jumpImpulse = jumpImpulse * 0.8
-//            }
-//            if scrollSpeed > 550
-//            {
-//                jumpImpulse = jumpImpulse * 0.8
-//            }
             hero.physicsBody?.applyImpulse(CGVectorMake(0, jumpImpulse))
-            //  print(hero.position.x)
             hero.paused = true;
             isAtGround = false
         }
@@ -244,51 +256,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func lightsDrama(x: Int)
     {
-        if x == 0
-        {
-            // do nothing
-        } else if x == 3
-        {
-            light1.falloff += 0.02
-            bnw3.zPosition = 0
-            
-        }else if x == 4
-        {
-            bnw4.zPosition = 0
-            
-        }else if x == 5
-        {
-            bnw5.zPosition = 0
-        }else //x == 6
-        {
-            bnw6.zPosition = 0
+        switch x {
+        case 1:
+            backPart1.runAction(SKAction.fadeOutWithDuration(2))
+        case 2:
+            backPart2.runAction(SKAction.fadeOutWithDuration(2))
+        case 3:
+            backPart3.runAction(SKAction.fadeOutWithDuration(2))
+        case 4:
+            backPart4.runAction(SKAction.fadeOutWithDuration(2))
+        case 5:
+            backPart5.runAction(SKAction.fadeOutWithDuration(2))
+        case 6:
+            backPart6.runAction(SKAction.fadeOutWithDuration(2))
+        case 7:
+            backPart7.runAction(SKAction.fadeOutWithDuration(2))
+        case 8:
+            backPart8.runAction(SKAction.fadeOutWithDuration(2))
+        case 9:
+            backPart9.runAction(SKAction.fadeOutWithDuration(2))
+        case 10:
+            backPart10.runAction(SKAction.fadeOutWithDuration(2))
+        case 11:
+            backPart11.runAction(SKAction.fadeOutWithDuration(2))
+        case 12:
+            backPart12.runAction(SKAction.fadeOutWithDuration(2))
+        case 13:
+            backPart13.runAction(SKAction.fadeOutWithDuration(2))
+        case 14:
+            backPart14.runAction(SKAction.fadeOutWithDuration(2))
+        default:
+            return
         }
-        
     }
     
     override func update(currentTime: CFTimeInterval)
     {
-        if ghost.position.x > 300
-        {
-            lightsDrama(6)
-        }else if ghost.position.x > 250
-        {
-            lightsDrama(5)
-        }
-        else if ghost.position.x > 200
-        {
-            lightsDrama(4)
-        }else if ghost.position.x > 150
-        {
-                lightsDrama(3)
-        }
-        else if ghost.position.x > 100
-        {
-            lightsDrama(0)
-        }
-        else
-            //do nothing
-        
         if gameState == .GameOver{
             hero.removeAllActions()
             groundScroll.removeAllActions()
@@ -297,14 +300,70 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             hero.removeFromParent()
             
             let resourchPath = NSBundle.mainBundle().pathForResource("TempLabel", ofType: "sks")
-            let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
-            box.position = CGPoint(x: 100, y: 100)
-            self.addChild(box)
-            
-            return
+                let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
+                box.position = CGPoint(x: 100, y: 100)
+                self.addChild(box)
+                
+                return
         }
         
         if gameState == .Active{
+            
+            if ghost.position.x > 382
+            {
+               // lightsDrama(14)
+            }
+//            else if ghost.position.x > 361
+//            {
+//                lightsDrama(13)
+//            }
+//            else if ghost.position.x > 340
+//            {
+//                lightsDrama(12)
+//            }
+            else if ghost.position.x > 319
+            {
+                lightsDrama(11)
+            }else if ghost.position.x > 298
+            {
+                lightsDrama(10)
+            }
+            else if ghost.position.x > 277
+            {
+                lightsDrama(9)
+            }else if ghost.position.x > 256
+            {
+                lightsDrama(8)
+            }
+            else if ghost.position.x > 235
+            {
+                lightsDrama(7)
+            }
+            else if ghost.position.x > 214
+            {
+                lightsDrama(6)
+            }
+            else if ghost.position.x > 193
+            {
+                lightsDrama(5)
+            }else if ghost.position.x > 172
+            {
+                lightsDrama(4)
+            }
+            else if ghost.position.x > 151
+            {
+                lightsDrama(3)
+            }else if ghost.position.x > 130
+            {
+                lightsDrama(2)
+            }
+            else if ghost.position.x > 109
+            {
+                lightsDrama(1)
+            }
+            else
+            {//do nothing
+            }
             
             if potion >= 12
             {
@@ -342,7 +401,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             speedLabel.text = String (scrollSpeed)   // printing speed
             
             //    if hero.position.x < -200
-            if hero.parent?.position.x < -9
+            if hero.parent?.position.x < -20
             {
                 gameState = .GameOver
                 return;
@@ -366,7 +425,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let randomNumber = Int(arc4random_uniform(UInt32(18)))
                 //  print("Number of boxes: \(randomNumber)")
                 
-              //  let randomNumber = 18
+                //  let randomNumber = 18
                 
                 if randomNumber >= 16
                 {
@@ -395,11 +454,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-//    func timerAction()
-//    {
-//        counter += 1
-//        print("counter \(counter)")
-//    }
+    //    func timerAction()
+    //    {
+    //        counter += 1
+    //        print("counter \(counter)")
+    //    }
     
     func didBeginContact(contact: SKPhysicsContact)
     {
@@ -426,16 +485,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //                hero.paused = false
             //                isAtGround = true
             //                }
+            isAtGround = true;
+            hero.paused = false
+            return
         }
         
         if nodeA.name == "pressurePoint" || nodeB.name == "pressurePoint"
         {
             
-            print("presure point hit")
+            //print("presure point hit")
             isAtGround = true;
             hero.paused = false
             return
-
+            
         }
         
         if nodeA.name == "ground" || nodeB.name == "ground"
@@ -447,7 +509,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 return
             }else{
-            hero.paused = false
+                hero.paused = false
             }
             return
             
@@ -576,6 +638,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ghostSpawnTimer = -5
         light1.falloff -= 0.5
         light2.falloff -= 0.5
+        
+        backPart6.runAction(SKAction.fadeInWithDuration(2))
+        backPart5.runAction(SKAction.fadeInWithDuration(2))
+        backPart3.runAction(SKAction.fadeInWithDuration(2))
+        backPart2.runAction(SKAction.fadeInWithDuration(2))
+        backPart1.runAction(SKAction.fadeInWithDuration(2))
+        
+        
+        
     }
     
     func ghostCreepIn()
@@ -647,16 +718,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
                 box.position = self.convertPoint(CGPoint(x: 600, y: 176), toNode: groundScroll)
                 groundScroll.addChild(box)
-
-//                
+                
+                //
                 potionSpawnTimer = 0
                 return
                 
             }
+            generalLanternTimeCounter = 19
             
         }else
         {
-            generalLanternTimeCounter = 16
+            generalLanternTimeCounter = 21
         }
         // add potions here and pops out after x time
         //more potions then lanterns
@@ -728,7 +800,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         groundScroll.addChild(myNil)
         
     }
-
+    
     func updateGroundScroll()
     {
         groundScroll.position.x -= scrollSpeed * CGFloat(fixedDelta)
@@ -763,7 +835,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func updateBackScroll()
     {
-    
+        
         backSpeed = scrollSpeed * 0.3
         
         backScroll.position.x -= backSpeed * CGFloat(fixedDelta)

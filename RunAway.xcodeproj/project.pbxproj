@@ -13,7 +13,22 @@
 		C80706D51D3EC341002FED0A /* Boost.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80706D41D3EC341002FED0A /* Boost.sks */; };
 		C80706D71D403CD6002FED0A /* TempLabel.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80706D61D403CD6002FED0A /* TempLabel.sks */; };
 		C80BE10B1D42D17400064567 /* Box4.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80BE10A1D42D17400064567 /* Box4.sks */; };
+		C856C20E1D4EC5EA0074BA5C /* ghostGirl_0000.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C2011D4EC5EA0074BA5C /* ghostGirl_0000.png */; };
+		C856C20F1D4EC5EA0074BA5C /* ghostGirl_0001.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C2021D4EC5EA0074BA5C /* ghostGirl_0001.png */; };
+		C856C2101D4EC5EA0074BA5C /* ghostGirl_0002.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C2031D4EC5EA0074BA5C /* ghostGirl_0002.png */; };
+		C856C2111D4EC5EA0074BA5C /* ghostGirl_0003.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C2041D4EC5EA0074BA5C /* ghostGirl_0003.png */; };
+		C856C2121D4EC5EA0074BA5C /* ghostGirl_0004.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C2051D4EC5EA0074BA5C /* ghostGirl_0004.png */; };
+		C856C2131D4EC5EA0074BA5C /* ghostGirl_0005.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C2061D4EC5EA0074BA5C /* ghostGirl_0005.png */; };
+		C856C2141D4EC5EA0074BA5C /* ghostGirl_0006.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C2071D4EC5EA0074BA5C /* ghostGirl_0006.png */; };
+		C856C2151D4EC5EA0074BA5C /* ghostGirl_0007.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C2081D4EC5EA0074BA5C /* ghostGirl_0007.png */; };
+		C856C2161D4EC5EA0074BA5C /* ghostGirl_0008.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C2091D4EC5EA0074BA5C /* ghostGirl_0008.png */; };
+		C856C2171D4EC5EA0074BA5C /* ghostGirl_0009.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C20A1D4EC5EA0074BA5C /* ghostGirl_0009.png */; };
+		C856C2181D4EC5EA0074BA5C /* ghostGirl_0010.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C20B1D4EC5EA0074BA5C /* ghostGirl_0010.png */; };
+		C856C2191D4EC5EA0074BA5C /* ghostGirl_0011.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C20C1D4EC5EA0074BA5C /* ghostGirl_0011.png */; };
+		C856C21A1D4EC5EA0074BA5C /* ghostGirl_0012.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C20D1D4EC5EA0074BA5C /* ghostGirl_0012.png */; };
 		C881D97E1D3E99A700038702 /* Ghost.sks in Resources */ = {isa = PBXBuildFile; fileRef = C881D97D1D3E99A700038702 /* Ghost.sks */; };
+		C8B289DC1D502257005A57F8 /* treeSlide.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8B289DB1D502257005A57F8 /* treeSlide.sks */; };
+		C8B289DE1D5103B7005A57F8 /* Dummy.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8B289DD1D5103B7005A57F8 /* Dummy.sks */; };
 		C8BCEFE61D49947C008F87F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8BCEFE51D49947C008F87F0 /* Assets.xcassets */; };
 		C8D00DD61D3D392400DC3FEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D00DD51D3D392400DC3FEB /* AppDelegate.swift */; };
 		C8D00DD81D3D392400DC3FEB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8D00DD71D3D392400DC3FEB /* GameScene.sks */; };
@@ -26,7 +41,9 @@
 		C8D00E0E1D3D4B7800DC3FEB /* Box1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8D00E0D1D3D4B7800DC3FEB /* Box1.sks */; };
 		C8D00E101D3D4BAC00DC3FEB /* Box2.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8D00E0F1D3D4BAC00DC3FEB /* Box2.sks */; };
 		C8D00E121D3D4BDC00DC3FEB /* Lantern.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8D00E111D3D4BDC00DC3FEB /* Lantern.sks */; };
-		C8E0C6061D46BAD00078EE8A /* Box1_dummy.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8E0C6051D46BAD00078EE8A /* Box1_dummy.sks */; };
+		C8EB843F1D4FCA8600413D9E /* LanternGlow.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8EB843E1D4FCA8600413D9E /* LanternGlow.sks */; };
+		C8EB84411D4FCCF800413D9E /* lanternFlame.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8EB84401D4FCCF800413D9E /* lanternFlame.sks */; };
+		C8EB84451D4FEC2A00413D9E /* sparkle.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8EB84441D4FEC2A00413D9E /* sparkle.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +70,22 @@
 		C80706D41D3EC341002FED0A /* Boost.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Boost.sks; sourceTree = "<group>"; };
 		C80706D61D403CD6002FED0A /* TempLabel.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TempLabel.sks; sourceTree = "<group>"; };
 		C80BE10A1D42D17400064567 /* Box4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Box4.sks; sourceTree = "<group>"; };
+		C856C2011D4EC5EA0074BA5C /* ghostGirl_0000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0000.png; sourceTree = "<group>"; };
+		C856C2021D4EC5EA0074BA5C /* ghostGirl_0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0001.png; sourceTree = "<group>"; };
+		C856C2031D4EC5EA0074BA5C /* ghostGirl_0002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0002.png; sourceTree = "<group>"; };
+		C856C2041D4EC5EA0074BA5C /* ghostGirl_0003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0003.png; sourceTree = "<group>"; };
+		C856C2051D4EC5EA0074BA5C /* ghostGirl_0004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0004.png; sourceTree = "<group>"; };
+		C856C2061D4EC5EA0074BA5C /* ghostGirl_0005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0005.png; sourceTree = "<group>"; };
+		C856C2071D4EC5EA0074BA5C /* ghostGirl_0006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0006.png; sourceTree = "<group>"; };
+		C856C2081D4EC5EA0074BA5C /* ghostGirl_0007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0007.png; sourceTree = "<group>"; };
+		C856C2091D4EC5EA0074BA5C /* ghostGirl_0008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0008.png; sourceTree = "<group>"; };
+		C856C20A1D4EC5EA0074BA5C /* ghostGirl_0009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0009.png; sourceTree = "<group>"; };
+		C856C20B1D4EC5EA0074BA5C /* ghostGirl_0010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0010.png; sourceTree = "<group>"; };
+		C856C20C1D4EC5EA0074BA5C /* ghostGirl_0011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0011.png; sourceTree = "<group>"; };
+		C856C20D1D4EC5EA0074BA5C /* ghostGirl_0012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0012.png; sourceTree = "<group>"; };
 		C881D97D1D3E99A700038702 /* Ghost.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Ghost.sks; sourceTree = "<group>"; };
+		C8B289DB1D502257005A57F8 /* treeSlide.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = treeSlide.sks; sourceTree = "<group>"; };
+		C8B289DD1D5103B7005A57F8 /* Dummy.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Dummy.sks; sourceTree = "<group>"; };
 		C8BCEFE51D49947C008F87F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8D00DD21D3D392400DC3FEB /* RunAway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunAway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D00DD51D3D392400DC3FEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +104,9 @@
 		C8D00E0D1D3D4B7800DC3FEB /* Box1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Box1.sks; sourceTree = "<group>"; };
 		C8D00E0F1D3D4BAC00DC3FEB /* Box2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Box2.sks; sourceTree = "<group>"; };
 		C8D00E111D3D4BDC00DC3FEB /* Lantern.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Lantern.sks; sourceTree = "<group>"; };
-		C8E0C6051D46BAD00078EE8A /* Box1_dummy.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Box1_dummy.sks; sourceTree = "<group>"; };
+		C8EB843E1D4FCA8600413D9E /* LanternGlow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LanternGlow.sks; sourceTree = "<group>"; };
+		C8EB84401D4FCCF800413D9E /* lanternFlame.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = lanternFlame.sks; sourceTree = "<group>"; };
+		C8EB84441D4FEC2A00413D9E /* sparkle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sparkle.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +134,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C856C2001D4EC5EA0074BA5C /* ghost */ = {
+			isa = PBXGroup;
+			children = (
+				C856C2011D4EC5EA0074BA5C /* ghostGirl_0000.png */,
+				C856C2021D4EC5EA0074BA5C /* ghostGirl_0001.png */,
+				C856C2031D4EC5EA0074BA5C /* ghostGirl_0002.png */,
+				C856C2041D4EC5EA0074BA5C /* ghostGirl_0003.png */,
+				C856C2051D4EC5EA0074BA5C /* ghostGirl_0004.png */,
+				C856C2061D4EC5EA0074BA5C /* ghostGirl_0005.png */,
+				C856C2071D4EC5EA0074BA5C /* ghostGirl_0006.png */,
+				C856C2081D4EC5EA0074BA5C /* ghostGirl_0007.png */,
+				C856C2091D4EC5EA0074BA5C /* ghostGirl_0008.png */,
+				C856C20A1D4EC5EA0074BA5C /* ghostGirl_0009.png */,
+				C856C20B1D4EC5EA0074BA5C /* ghostGirl_0010.png */,
+				C856C20C1D4EC5EA0074BA5C /* ghostGirl_0011.png */,
+				C856C20D1D4EC5EA0074BA5C /* ghostGirl_0012.png */,
+			);
+			path = ghost;
+			sourceTree = "<group>";
+		};
 		C8D00DC91D3D392300DC3FEB = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +177,7 @@
 		C8D00DD41D3D392400DC3FEB /* RunAway */ = {
 			isa = PBXGroup;
 			children = (
+				C856C2001D4EC5EA0074BA5C /* ghost */,
 				C8D00E151D3D4C4D00DC3FEB /* SKS */,
 				C8D00DD91D3D392400DC3FEB /* GameScene.swift */,
 				C8D00DDD1D3D392400DC3FEB /* Main.storyboard */,
@@ -157,17 +212,21 @@
 			isa = PBXGroup;
 			children = (
 				C80706D41D3EC341002FED0A /* Boost.sks */,
+				C8EB84441D4FEC2A00413D9E /* sparkle.sks */,
+				C8EB843E1D4FCA8600413D9E /* LanternGlow.sks */,
+				C8EB84401D4FCCF800413D9E /* lanternFlame.sks */,
 				C806411B1D47F90100DF1DED /* Fire.sks */,
 				C806411C1D47F90100DF1DED /* spark.png */,
+				C8B289DD1D5103B7005A57F8 /* Dummy.sks */,
 				C80641191D47F3F600DF1DED /* Character1.sks */,
 				C881D97D1D3E99A700038702 /* Ghost.sks */,
 				C8D00E0D1D3D4B7800DC3FEB /* Box1.sks */,
-				C8E0C6051D46BAD00078EE8A /* Box1_dummy.sks */,
 				C8D00E0F1D3D4BAC00DC3FEB /* Box2.sks */,
 				C8D00E111D3D4BDC00DC3FEB /* Lantern.sks */,
 				C80BE10A1D42D17400064567 /* Box4.sks */,
 				C80706D61D403CD6002FED0A /* TempLabel.sks */,
 				C8D00DD71D3D392400DC3FEB /* GameScene.sks */,
+				C8B289DB1D502257005A57F8 /* treeSlide.sks */,
 			);
 			name = SKS;
 			sourceTree = "<group>";
@@ -279,21 +338,38 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8EB84451D4FEC2A00413D9E /* sparkle.sks in Resources */,
 				C806411E1D47F90100DF1DED /* spark.png in Resources */,
 				C8D00E101D3D4BAC00DC3FEB /* Box2.sks in Resources */,
 				C806411A1D47F3F600DF1DED /* Character1.sks in Resources */,
 				C80BE10B1D42D17400064567 /* Box4.sks in Resources */,
 				C80706D51D3EC341002FED0A /* Boost.sks in Resources */,
+				C8B289DC1D502257005A57F8 /* treeSlide.sks in Resources */,
 				C8BCEFE61D49947C008F87F0 /* Assets.xcassets in Resources */,
 				C8D00DD81D3D392400DC3FEB /* GameScene.sks in Resources */,
+				C856C2161D4EC5EA0074BA5C /* ghostGirl_0008.png in Resources */,
+				C856C2181D4EC5EA0074BA5C /* ghostGirl_0010.png in Resources */,
+				C856C2131D4EC5EA0074BA5C /* ghostGirl_0005.png in Resources */,
+				C856C20E1D4EC5EA0074BA5C /* ghostGirl_0000.png in Resources */,
 				C8D00DE41D3D392400DC3FEB /* LaunchScreen.storyboard in Resources */,
 				C881D97E1D3E99A700038702 /* Ghost.sks in Resources */,
-				C8E0C6061D46BAD00078EE8A /* Box1_dummy.sks in Resources */,
+				C856C2111D4EC5EA0074BA5C /* ghostGirl_0003.png in Resources */,
 				C8D00E0E1D3D4B7800DC3FEB /* Box1.sks in Resources */,
 				C8D00E121D3D4BDC00DC3FEB /* Lantern.sks in Resources */,
+				C856C2101D4EC5EA0074BA5C /* ghostGirl_0002.png in Resources */,
+				C856C2191D4EC5EA0074BA5C /* ghostGirl_0011.png in Resources */,
+				C8B289DE1D5103B7005A57F8 /* Dummy.sks in Resources */,
+				C856C20F1D4EC5EA0074BA5C /* ghostGirl_0001.png in Resources */,
 				C806411D1D47F90100DF1DED /* Fire.sks in Resources */,
+				C856C2171D4EC5EA0074BA5C /* ghostGirl_0009.png in Resources */,
+				C856C21A1D4EC5EA0074BA5C /* ghostGirl_0012.png in Resources */,
 				C8D00DDF1D3D392400DC3FEB /* Main.storyboard in Resources */,
 				C80706D71D403CD6002FED0A /* TempLabel.sks in Resources */,
+				C8EB843F1D4FCA8600413D9E /* LanternGlow.sks in Resources */,
+				C8EB84411D4FCCF800413D9E /* lanternFlame.sks in Resources */,
+				C856C2121D4EC5EA0074BA5C /* ghostGirl_0004.png in Resources */,
+				C856C2151D4EC5EA0074BA5C /* ghostGirl_0007.png in Resources */,
+				C856C2141D4EC5EA0074BA5C /* ghostGirl_0006.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,10 +540,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RunAway/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nityamshrestha.RunAway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -475,10 +553,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RunAway/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nityamshrestha.RunAway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

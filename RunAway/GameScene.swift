@@ -12,10 +12,19 @@ import Foundation
 enum State{
     case Active, Paused, GameOver, LanternGlow
 }
+
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var missionNumber: Int = 1
     
-    var gameState:State = .Active
+    var missionReport = MissionReport()
+    
+    var gameState:State = .Paused
+    var missionLabel: SKLabelNode!
+    var missionBoard:SKSpriteNode!
+    var missionHide: SKAction!
+    
     var groundScroll: SKNode!
     var cloudScroll: SKNode!
     var backScroll: SKNode!
@@ -54,10 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var jumpImpulse:CGFloat = 18
 
     var flameLabel:SKLabelNode!
-    //var lamp1:SKNode!
-    //var lamp2:SKNode!
-    //var lamp3:SKNode!
-    //var lamp4:SKNode!
+    
     var bigLantern:SKSpriteNode!
     var lanternFlame: SKEmitterNode!
     var heroLight: SKLightNode!
@@ -102,6 +108,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel = self.childNodeWithName("scoreLabel") as! SKLabelNode
         speedLabel = self.childNodeWithName("speedLabel") as! SKLabelNode
         flameLabel = self.childNodeWithName("flameLabel") as! SKLabelNode
+        
+        missionLabel = self.childNodeWithName("//missionLabel") as! SKLabelNode
+        missionBoard = self.childNodeWithName("missionBoard") as! SKSpriteNode
         
         /* background color effects */
         backPart1 = self.childNodeWithName("part1") as! SKSpriteNode
@@ -235,6 +244,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         for touch in touches
         {
+            if gameState == .Paused
+            {
+                let pt = touch.locationInNode(self)
+                if (self.nodeAtPoint(pt).name == "missionBoard" || self.nodeAtPoint(pt).name == "missionLabel")
+                {
+                    missionBoard.runAction(missionHide)
+                    gameState = .Active
+                    hero.paused = false
+                    ghost.paused = false
+                    ghostCreepIn()
+                    return
+                }
+                
+            }
             
             if gameState == .GameOver
             {
@@ -243,25 +266,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if gameState == .Active
             {
+                let pt = touch.locationInNode(self)
+                if (nodeAtPoint(pt).name == "pauseButton")
+                {
+                    gameState = .Paused
+                    return
+                }
+
+                hero.paused = false
                 if flameCount >= 10
                 {
                     bigLantern.zPosition = 3
                     lanternFlame.zPosition = 2
-
-                    let pt = touch.locationInNode(self)
                     if(nodeAtPoint(pt).name == "lanternBig")
                     {
                         heroPowerUp(-7)
                         superHeroUp()
-                        flameCount = 0
+                        flameCount -= 10
+                        if flameCount < 10
+                        {
                         bigLantern.zPosition = -1
                         lanternFlame.zPosition = -1
+                        }
                     }
                 }
             }
         }
     }
     
+    func showMission()
+    {
+        hero.paused = true
+        missionLabel.text = missionReport.getMission(missionNumber)
+        let missionShow = SKAction.moveToY(250, duration: 0.2)
+         missionHide = SKAction.moveToY(400, duration: 0.5)
+        missionBoard.runAction(missionShow)
+    }
     func heroJump()
     {
         if(isAtGround)
@@ -314,9 +354,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
     }
+    func pauseGhost()
+    {
+        ghost.paused = true
+        ghost.removeActionForKey("creepIn")
+    }
     
     override func update(currentTime: CFTimeInterval)
     {
+        if gameState == .Paused{
+              showMission()
+                pauseGhost()
+            return
+        }
         if gameState == .GameOver{
             hero.removeAllActions()
             groundScroll.removeAllActions()
@@ -333,8 +383,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if gameState == .Active{
-            
-           if ghost.position.x > 319
+            if ghost.position.x > 319
             {
                 lightsDrama(11)
             }else if ghost.position.x > 298
@@ -408,26 +457,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if scoreCounter % 79 == 0
             {
-//                let randomNumber = Int(arc4random_uniform(UInt32(20)))
+                let randomNumber = Int(arc4random_uniform(UInt32(20)))
     
-                let randomNumber = -1
+//                let randomNumber = -1
                 
                 if randomNumber >= 19
                 {
-                    addBox(4) // trees
+                    addObstacle(4) // trees
                 }
                 else if randomNumber >= 16
                 {
-                    addBox(5)  // floating box
+                    addObstacle(5)  // floating box
                 }
                 else if randomNumber >= 13
                 {
-                    addBox(3)  // box 4
+                    addObstacle(3)  // box 4
                 }
                 else if randomNumber >= 8{
-                    addBox(2)   // box 2
+                    addObstacle(2)   // box 2
                 }else if randomNumber >= 0{
-                    addBox(1)   // box1
+                    addObstacle(1)   // box1
                 }else{
                     //do nothing
                 }
@@ -604,7 +653,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func ghostCreepIn()
     {
-        let creepIn = SKAction.moveToX(CGFloat(800), duration:80)
+        let creepIn = SKAction.moveToX(CGFloat(800), duration:100)
         ghost.runAction(creepIn, withKey: "creepIn")
     }
     
@@ -646,23 +695,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ghostSpawnTimer = 0
         }
         
-        if flameCount < 10              // i.e, if SuperLantern is complete no more potions
+        if potionSpawnTimer > 7       //flame spawn
         {
-            if potionSpawnTimer > 4       //potions spawn
-            {
-                let resourchPath = NSBundle.mainBundle().pathForResource("Boost", ofType: "sks")
-                let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
-                box.position = self.convertPoint(CGPoint(x: 600, y: 176), toNode: groundScroll)
-                groundScroll.addChild(box)
-                
-                //
-                potionSpawnTimer = 0
-                return
-                
-            }
+            let resourchPath = NSBundle.mainBundle().pathForResource("Boost", ofType: "sks")
+            let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
+            box.position = self.convertPoint(CGPoint(x: 600, y: 176), toNode: groundScroll)
+            groundScroll.addChild(box)
+            
+            //
+            potionSpawnTimer = 0
+            return
+            
+        }
+        
+        if flameCount < 10            // i.e, if SuperLantern is complete== less regular lantern
+        {
             generalLanternTimeCounter = 20
             
-        }else
+        }
+        else
         {
             generalLanternTimeCounter = 23
         }
@@ -692,7 +743,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      x == 2 for Box2.sks
      x == 3 for Box3.sks
      */
-    func addBox(x: Int)
+    func addObstacle(x: Int)
     {
         var resourcePath:String!
         var box:SKReferenceNode!
@@ -720,8 +771,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             box.position = self.convertPoint(CGPoint(x: 600, y: 70), toNode: groundScroll)
             
         }
+//        else if x == 6
+//        {
+//            resourcePath = NSBundle.mainBundle().pathForResource("Box2", ofType: "sks")
+//            box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath))
+//            
+//            box.position = self.convertPoint(CGPoint(x: 600, y: 108), toNode: groundScroll)
+//            box.setScale(0.75)
+//        }
         else
         {
+            // flyinh box
             resourcePath = NSBundle.mainBundle().pathForResource("Box2", ofType: "sks")
             box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath))
             
@@ -782,5 +842,69 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+//    
+//    func getMission(number : Int) -> String
+//    {
+//        switch number {
+//        case 1:
+//            print("Collect 20 flames in one game in one game")
+//            return "Collect 20 flames in one game in one game"
+//        case 2:
+//            print("Collect  10 regular lantern in one game")
+//            return "Collect  10 regular lantern in one game"
+//        case 3:
+//            print("Activate 3 ruper lantern in one game")
+//            return "Activate 3 ruper lantern in one game"
+//        case 4:
+//            print("Slide for 20 points in one game")
+//            return "Slide for 20 points in one game"
+//        default:
+//            return "Invalid mission number"
+//        }
+//    }
+//    
+//    func missionCheck(missionNumber: Int, value: Int) -> Bool
+//    {
+//        //var checkInt = missionNumber % 4
+//        switch missionNumber {
+//        case 1:
+//            if value == 20
+//            {
+//                return true
+//            }
+//            else
+//            {
+//                return false
+//            }
+//        case 2:
+//            if value == 10
+//            {
+//                return true
+//            }
+//            else{
+//                return false
+//            }
+//        case 3:
+//            if value == 3
+//            {
+//                return true
+//            }
+//            else
+//            {
+//                return false
+//            }
+//        default:
+//            if value == 20
+//            {
+//                return true
+//            }
+//            else
+//            {
+//                return false
+//            }
+//        }
+//    }
+//    
+    
     
 }

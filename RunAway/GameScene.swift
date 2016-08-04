@@ -22,8 +22,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var gameState:State = .Paused
     var missionLabel: SKLabelNode!
+    var titeLabel: SKLabelNode!
     var missionBoard:SKSpriteNode!
     var missionHide: SKAction!
+    var missionComplete: Bool = false
     
     var groundScroll: SKNode!
     var cloudScroll: SKNode!
@@ -60,11 +62,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var myBox:SKSpriteNode!
     
     var flameCount:Int = 0
+    var totalFlameCount:Int = 0
+    var totalLanterns:Int = 0
+    var totalMegaLantern:Int = 0
+    var totalJumps = 0
+    var totalSlides = 0
+    var totalTrees = 0
+    
     var jumpImpulse:CGFloat = 18
-
     var flameLabel:SKLabelNode!
     
-    var bigLantern:SKSpriteNode!
+    var megaLantern:SKSpriteNode!
     var lanternFlame: SKEmitterNode!
     var heroLight: SKLightNode!
     var light1: SKLightNode!
@@ -85,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isAtGround: Bool = true
     var tempLabel: SKLabelNode?
     
-    var gameReset:SKAction!
+    var gameOverScene:SKAction!
     //  var ambientColor: UIColor?
     
     override func didMoveToView(view: SKView)
@@ -95,7 +103,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         cloudScroll = self.childNodeWithName("cloudScroll")
         backScroll = self.childNodeWithName("backScroll")
         
-        bigLantern = self.childNodeWithName("//lanternBig") as! SKSpriteNode
+        megaLantern = self.childNodeWithName("//lanternBig") as! SKSpriteNode
         lanternFlame = self.childNodeWithName("//lanternFlame") as! SKEmitterNode
 
         heroLight = self.childNodeWithName("//heroLight") as! SKLightNode
@@ -109,6 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         speedLabel = self.childNodeWithName("speedLabel") as! SKLabelNode
         flameLabel = self.childNodeWithName("flameLabel") as! SKLabelNode
         
+        titeLabel = self.childNodeWithName("//titleLabel") as! SKLabelNode
         missionLabel = self.childNodeWithName("//missionLabel") as! SKLabelNode
         missionBoard = self.childNodeWithName("missionBoard") as! SKSpriteNode
         
@@ -146,13 +155,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         /* Reset Run Block */
-         gameReset = SKAction.runBlock({
+         gameOverScene = SKAction.runBlock({
             let skView = self.view as SKView!
             
-            let scene = GameScene(fileNamed: "GameScene") as GameScene!
+            let scene = GameOver(fileNamed: "GameOver") as GameOver!
+            scene.score = self.score
+            scene.levelCompelete = self.missionComplete
             scene.scaleMode = .AspectFill
             skView.presentScene(scene)
         })
+        
+        
         
         //    ambientColor = UIColor.darkGrayColor()
 //        initSprite()
@@ -226,6 +239,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hero.xScale = 0.96
         hero.yScale = 0.96
         
+        totalSlides += 1
         // physics body doesn't change during slide and hero flies
         
         print("hero texture changed")
@@ -251,7 +265,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 {
                     missionBoard.runAction(missionHide)
                     gameState = .Active
-                    hero.paused = false
+                    unpauseHero()
                     ghost.paused = false
                     ghostCreepIn()
                     return
@@ -261,7 +275,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if gameState == .GameOver
             {
-                self.runAction(gameReset)
+                return
             }
             
             if gameState == .Active
@@ -276,16 +290,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 hero.paused = false
                 if flameCount >= 10
                 {
-                    bigLantern.zPosition = 3
+                    megaLantern.zPosition = 3
                     lanternFlame.zPosition = 2
                     if(nodeAtPoint(pt).name == "lanternBig")
                     {
+                        totalMegaLantern += 1
                         heroPowerUp(-7)
                         superHeroUp()
                         flameCount -= 10
                         if flameCount < 10
                         {
-                        bigLantern.zPosition = -1
+                        megaLantern.zPosition = -1
                         lanternFlame.zPosition = -1
                         }
                     }
@@ -309,6 +324,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             hero.physicsBody?.applyImpulse(CGVectorMake(0, jumpImpulse))
             hero.paused = true;
             isAtGround = false
+            totalJumps += 1
         }
     }
     
@@ -359,11 +375,60 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ghost.paused = true
         ghost.removeActionForKey("creepIn")
     }
-    
+    func pauseHero()
+    {
+        hero.paused = true
+        hero.physicsBody?.affectedByGravity = false
+        hero.physicsBody?.dynamic = false
+    }
+    func unpauseHero()
+    {
+        hero.paused = false
+        hero.physicsBody?.affectedByGravity = true
+        hero.physicsBody?.dynamic = true
+    }
+    func missionValidation()-> Bool
+    {
+        if missionNumber == 1
+        {
+            return missionReport.missionCheck(missionNumber, value: totalFlameCount)
+        }else if missionNumber == 2
+        {
+            return missionReport.missionCheck(missionNumber, value: totalLanterns)
+        }else if missionNumber == 3
+        {
+            return missionReport.missionCheck(missionNumber, value: totalMegaLantern)
+        }else if missionNumber == 4
+        {
+            return missionReport.missionCheck(missionNumber, value: totalMegaLantern)
+        }else if missionNumber == 5
+        {
+            return missionReport.missionCheck(missionNumber, value: score)
+        }else if missionNumber == 6
+        {
+            return missionReport.missionCheck(missionNumber, value: totalFlameCount)
+        }else if missionNumber == 7
+        {
+            return missionReport.missionCheck(missionNumber, value: totalTrees)
+        }else if missionNumber == 8
+        {
+            return missionReport.missionCheck(missionNumber, value: totalJumps)
+        }else if missionNumber == 9
+        {
+            return missionReport.missionCheck(missionNumber, value: totalSlides)
+        }else if missionNumber == 10
+        {
+            return missionReport.missionCheck(missionNumber, value: 1)
+        }else
+        {
+            return false
+        }
+    }
     override func update(currentTime: CFTimeInterval)
     {
         if gameState == .Paused{
               showMission()
+                pauseHero()
                 pauseGhost()
             return
         }
@@ -373,13 +438,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             cloudScroll.removeAllActions()
             backScroll.removeAllActions()
             hero.removeFromParent()
+            pauseGhost()
+            missionComplete = missionValidation()
             
-            let resourchPath = NSBundle.mainBundle().pathForResource("TempLabel", ofType: "sks")
-                let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
-                box.position = CGPoint(x: 100, y: 100)
-                self.addChild(box)
-                
-                return
+            print("flames \(totalFlameCount)")
+            print("lanterns \(totalLanterns)")
+            print("megalanterns \(totalMegaLantern)")
+            print("slides \(totalSlides)")
+            print("jump \(totalJumps)")
+            
+//            let resourchPath = NSBundle.mainBundle().pathForResource("TempLabel", ofType: "sks")
+//                let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
+//                box.position = CGPoint(x: 100, y: 100)
+//                self.addChild(box)
+//         
+            self.runAction(gameOverScene)
+            return
         }
         
         if gameState == .Active{
@@ -465,11 +539,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 {
                     addObstacle(4) // trees
                 }
-                else if randomNumber >= 16
+                else if randomNumber >= 17
                 {
                     addObstacle(5)  // floating box
                 }
-                else if randomNumber >= 13
+                else if randomNumber >= 14
                 {
                     addObstacle(3)  // box 4
                 }
@@ -536,6 +610,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if nodeA.name == "lantern" || nodeB.name == "lantern"
         {
+            totalLanterns += 1
             heroPowerUp(-3)                       // powerUp Effects
             
             if  nodeA.name != "hero"
@@ -551,7 +626,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if nodeA.name == "potion" || nodeB.name == "potion"
         {
             flameCount += 1
-            
+            totalFlameCount += 1
             if hero.parent?.position.x < 200
             {
                 let heroLimit =  SKAction.moveToX((hero.parent?.position.x)! + 10, duration: 1.5)
@@ -762,6 +837,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             else if score > 77
             {
                 resourcePath = NSBundle.mainBundle().pathForResource("treeSlide", ofType: "sks")
+                totalTrees += 1
             }
             else
             {
@@ -841,70 +917,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 ground.position = self.convertPoint(newPosition, toNode: backScroll)
             }
         }
-    }
-//    
-//    func getMission(number : Int) -> String
-//    {
-//        switch number {
-//        case 1:
-//            print("Collect 20 flames in one game in one game")
-//            return "Collect 20 flames in one game in one game"
-//        case 2:
-//            print("Collect  10 regular lantern in one game")
-//            return "Collect  10 regular lantern in one game"
-//        case 3:
-//            print("Activate 3 ruper lantern in one game")
-//            return "Activate 3 ruper lantern in one game"
-//        case 4:
-//            print("Slide for 20 points in one game")
-//            return "Slide for 20 points in one game"
-//        default:
-//            return "Invalid mission number"
-//        }
-//    }
-//    
-//    func missionCheck(missionNumber: Int, value: Int) -> Bool
-//    {
-//        //var checkInt = missionNumber % 4
-//        switch missionNumber {
-//        case 1:
-//            if value == 20
-//            {
-//                return true
-//            }
-//            else
-//            {
-//                return false
-//            }
-//        case 2:
-//            if value == 10
-//            {
-//                return true
-//            }
-//            else{
-//                return false
-//            }
-//        case 3:
-//            if value == 3
-//            {
-//                return true
-//            }
-//            else
-//            {
-//                return false
-//            }
-//        default:
-//            if value == 20
-//            {
-//                return true
-//            }
-//            else
-//            {
-//                return false
-//            }
-//        }
-//    }
-//    
-    
+    }    
     
 }

@@ -16,7 +16,13 @@ enum State{
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var missionNumber: Int = 1
+    var missionNumber:Int = NSUserDefaults.standardUserDefaults().integerForKey("mNumber") ?? 1 {
+        didSet {
+            NSUserDefaults.standardUserDefaults().setInteger(missionNumber, forKey:"mNumber")
+            // Saves to disk immediately, otherwise it will save when it has time
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
     
     var missionReport = MissionReport()
     
@@ -260,16 +266,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             if gameState == .Paused
             {
-                let pt = touch.locationInNode(self)
-                if (self.nodeAtPoint(pt).name == "missionBoard" || self.nodeAtPoint(pt).name == "missionLabel")
-                {
+//                let pt = touch.locationInNode(self)
+//                if (self.nodeAtPoint(pt).name == "missionBoard" || self.nodeAtPoint(pt).name == "missionLabel")
+//                {
                     missionBoard.runAction(missionHide)
                     gameState = .Active
                     unpauseHero()
                     ghost.paused = false
                     ghostCreepIn()
                     return
-                }
+               // }
                 
             }
             
@@ -313,7 +319,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         hero.paused = true
         missionLabel.text = missionReport.getMission(missionNumber)
-        let missionShow = SKAction.moveToY(250, duration: 0.2)
+        let missionShow = SKAction.moveToY(200, duration: 0.2)
          missionHide = SKAction.moveToY(400, duration: 0.5)
         missionBoard.runAction(missionShow)
     }
@@ -440,7 +446,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             hero.removeFromParent()
             pauseGhost()
             missionComplete = missionValidation()
-            
+            if missionComplete == true{
+                missionNumber += 1
+            }
             print("flames \(totalFlameCount)")
             print("lanterns \(totalLanterns)")
             print("megalanterns \(totalMegaLantern)")

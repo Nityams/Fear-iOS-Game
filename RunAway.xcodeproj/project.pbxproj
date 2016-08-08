@@ -14,12 +14,12 @@
 		C806411E1D47F90100DF1DED /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = C806411C1D47F90100DF1DED /* spark.png */; };
 		C80706D51D3EC341002FED0A /* Boost.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80706D41D3EC341002FED0A /* Boost.sks */; };
 		C80BE10B1D42D17400064567 /* Box4.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80BE10A1D42D17400064567 /* Box4.sks */; };
+		C80E3F2B1D590B6700537860 /* Tutorial.sks in Resources */ = {isa = PBXBuildFile; fileRef = C80E3F2A1D590B6700537860 /* Tutorial.sks */; };
+		C80E3F2D1D590BEE00537860 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80E3F2C1D590BEE00537860 /* Tutorial.swift */; };
 		C8306A741D54F910001BEB3A /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8306A731D54F910001BEB3A /* MainMenu.sks */; };
 		C8306A771D5508F0001BEB3A /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8306A761D5508F0001BEB3A /* MainMenu.swift */; };
 		C8306A7A1D551556001BEB3A /* HighScoreScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8306A791D551556001BEB3A /* HighScoreScene.sks */; };
-		C8306A7C1D55156D001BEB3A /* SettingsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8306A7B1D55156D001BEB3A /* SettingsScene.sks */; };
 		C8306A7E1D551777001BEB3A /* HighScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8306A7D1D551777001BEB3A /* HighScore.swift */; };
-		C8306A801D551788001BEB3A /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8306A7F1D551788001BEB3A /* SettingsScene.swift */; };
 		C856C20E1D4EC5EA0074BA5C /* ghostGirl_0000.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C2011D4EC5EA0074BA5C /* ghostGirl_0000.png */; };
 		C856C20F1D4EC5EA0074BA5C /* ghostGirl_0001.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C2021D4EC5EA0074BA5C /* ghostGirl_0001.png */; };
 		C856C2101D4EC5EA0074BA5C /* ghostGirl_0002.png in Resources */ = {isa = PBXBuildFile; fileRef = C856C2031D4EC5EA0074BA5C /* ghostGirl_0002.png */; };
@@ -79,12 +79,12 @@
 		C806411C1D47F90100DF1DED /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		C80706D41D3EC341002FED0A /* Boost.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Boost.sks; sourceTree = "<group>"; };
 		C80BE10A1D42D17400064567 /* Box4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Box4.sks; sourceTree = "<group>"; };
+		C80E3F2A1D590B6700537860 /* Tutorial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tutorial.sks; sourceTree = "<group>"; };
+		C80E3F2C1D590BEE00537860 /* Tutorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		C8306A731D54F910001BEB3A /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		C8306A761D5508F0001BEB3A /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C8306A791D551556001BEB3A /* HighScoreScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HighScoreScene.sks; sourceTree = "<group>"; };
-		C8306A7B1D55156D001BEB3A /* SettingsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SettingsScene.sks; sourceTree = "<group>"; };
 		C8306A7D1D551777001BEB3A /* HighScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScore.swift; sourceTree = "<group>"; };
-		C8306A7F1D551788001BEB3A /* SettingsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScene.swift; sourceTree = "<group>"; };
 		C856C2011D4EC5EA0074BA5C /* ghostGirl_0000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0000.png; sourceTree = "<group>"; };
 		C856C2021D4EC5EA0074BA5C /* ghostGirl_0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0001.png; sourceTree = "<group>"; };
 		C856C2031D4EC5EA0074BA5C /* ghostGirl_0002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghostGirl_0002.png; sourceTree = "<group>"; };
@@ -153,12 +153,12 @@
 		C8306A751D5508D7001BEB3A /* Swift */ = {
 			isa = PBXGroup;
 			children = (
-				C8306A761D5508F0001BEB3A /* MainMenu.swift */,
-				C803EEB31D52A05B003180C2 /* GameOver.swift */,
+				C80E3F2C1D590BEE00537860 /* Tutorial.swift */,
 				C8D00DD91D3D392400DC3FEB /* GameScene.swift */,
-				C8B289E11D512B9D005A57F8 /* MissionReport.swift */,
+				C8306A761D5508F0001BEB3A /* MainMenu.swift */,
 				C8306A7D1D551777001BEB3A /* HighScore.swift */,
-				C8306A7F1D551788001BEB3A /* SettingsScene.swift */,
+				C803EEB31D52A05B003180C2 /* GameOver.swift */,
+				C8B289E11D512B9D005A57F8 /* MissionReport.swift */,
 			);
 			name = Swift;
 			sourceTree = "<group>";
@@ -167,10 +167,10 @@
 			isa = PBXGroup;
 			children = (
 				C8306A731D54F910001BEB3A /* MainMenu.sks */,
+				C80E3F2A1D590B6700537860 /* Tutorial.sks */,
 				C8D00DD71D3D392400DC3FEB /* GameScene.sks */,
 				C803EEB11D529EBA003180C2 /* GameOver.sks */,
 				C8306A791D551556001BEB3A /* HighScoreScene.sks */,
-				C8306A7B1D55156D001BEB3A /* SettingsScene.sks */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -394,11 +394,11 @@
 				C8306A7A1D551556001BEB3A /* HighScoreScene.sks in Resources */,
 				C8D00DE41D3D392400DC3FEB /* LaunchScreen.storyboard in Resources */,
 				C881D97E1D3E99A700038702 /* Ghost.sks in Resources */,
-				C8306A7C1D55156D001BEB3A /* SettingsScene.sks in Resources */,
 				C856C2111D4EC5EA0074BA5C /* ghostGirl_0003.png in Resources */,
 				C8D00E0E1D3D4B7800DC3FEB /* Box1.sks in Resources */,
 				C8D00E121D3D4BDC00DC3FEB /* Lantern.sks in Resources */,
 				C856C2101D4EC5EA0074BA5C /* ghostGirl_0002.png in Resources */,
+				C80E3F2B1D590B6700537860 /* Tutorial.sks in Resources */,
 				C856C2191D4EC5EA0074BA5C /* ghostGirl_0011.png in Resources */,
 				C8B289DE1D5103B7005A57F8 /* Dummy.sks in Resources */,
 				C856C20F1D4EC5EA0074BA5C /* ghostGirl_0001.png in Resources */,
@@ -442,7 +442,7 @@
 				C8306A771D5508F0001BEB3A /* MainMenu.swift in Sources */,
 				C8D00DDA1D3D392400DC3FEB /* GameScene.swift in Sources */,
 				C8D00DDC1D3D392400DC3FEB /* GameViewController.swift in Sources */,
-				C8306A801D551788001BEB3A /* SettingsScene.swift in Sources */,
+				C80E3F2D1D590BEE00537860 /* Tutorial.swift in Sources */,
 				C803EEB41D52A05B003180C2 /* GameOver.swift in Sources */,
 				C8D00DD61D3D392400DC3FEB /* AppDelegate.swift in Sources */,
 			);

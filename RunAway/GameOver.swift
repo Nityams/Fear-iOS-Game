@@ -44,24 +44,30 @@ class GameOver:SKScene
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
-        for touch in touches
+        for _ in touches
         {
-            if touchCount >= 1
-            {
+           // if touchCount >= 1
+            //{
+                let scene = HighScore(fileNamed: "HighScoreScene") as HighScore!
+                if scene.score < totalScore
+                {
+                    scene.score = totalScore
+                }
+                
                 self.runAction(gameReset)
-            }
-            else
-            {
-                missionScoreLabel.text = String (missionScore)
-                missionScoreLabel.zPosition = 1
-                scoreLabel.zPosition = 1
-                totalScoreLabel.text = String(totalScore)
-                totalScoreLabel.zPosition = 1
-                labels1.zPosition = 1
-                labels2.zPosition = 1
-                labels3.zPosition = 1
-                touchCount += 1
-            }
+            //}
+//            else
+//            {
+//                missionScoreLabel.text = String (missionScore)
+//                missionScoreLabel.zPosition = 1
+//                scoreLabel.zPosition = 1
+//                totalScoreLabel.text = String(totalScore)
+//                totalScoreLabel.zPosition = 1
+//                labels1.zPosition = 1
+//                labels2.zPosition = 1
+//                labels3.zPosition = 1
+//                touchCount += 1
+//            }
         }
     }
     
@@ -77,5 +83,17 @@ class GameOver:SKScene
         {
             totalScore = score
         }
+        
+        
+        missionScoreLabel.text = String (missionScore)
+        missionScoreLabel.zPosition = 1
+        scoreLabel.zPosition = 1
+        totalScoreLabel.text = String(totalScore)
+        totalScoreLabel.zPosition = 1
+        labels1.zPosition = 1
+        labels2.zPosition = 1
+        labels3.zPosition = 1
+        touchCount += 1
+
     }
 }

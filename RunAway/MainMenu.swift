@@ -33,7 +33,7 @@ class MainMenu:SKScene{
         })
         highscoreScene = SKAction.runBlock({
             let skview = self.view as SKView!
-            let scene = GameScene(fileNamed:"GameScene") as GameScene!
+            let scene = HighScore(fileNamed:"HighScoreScene") as HighScore!
             scene.scaleMode = .AspectFill
             skview.presentScene(scene)
         })
@@ -49,17 +49,21 @@ class MainMenu:SKScene{
         for touch in touches
         {
             let pt = touch.locationInNode(self)
-            if(nodeAtPoint(pt).name == "start" || nodeAtPoint(pt).name == "startButton")
+            if(nodeAtPoint(pt).name == "start" || nodeAtPoint(pt).name == "startbutton")
             {
                 self.runAction(startGame)
+                return
             }
-            if(nodeAtPoint(pt).name == "highScoreButton" || nodeAtPoint(pt) == "highScores"){
-                
+            else if(nodeAtPoint(pt).name == "highScoreButton" || nodeAtPoint(pt).name == "HighScore"){
+                self.runAction(highscoreScene)
+                return
             }
-            if (nodeAtPoint(pt).name == "settings" || nodeAtPoint(pt) == "settingsButton")
+            else if (nodeAtPoint(pt).name == "settings" || nodeAtPoint(pt).name == "settingsButton")
             {
-                
+                return
             }
+            else
+            {return}
         }
     }
 }

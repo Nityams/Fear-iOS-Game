@@ -36,7 +36,7 @@ class GameOver:SKScene
             let skView = self.view as SKView!
             
             let scene = GameScene(fileNamed: "GameScene") as GameScene!
-            scene.scaleMode = .AspectFill
+            scene.scaleMode = .AspectFit
             skView.presentScene(scene)
         })
         

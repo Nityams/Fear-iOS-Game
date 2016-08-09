@@ -47,7 +47,7 @@ class HighScore: SKScene {
         returnback = SKAction.runBlock({
             let skview = self.view as SKView!
             let scene = MainMenu(fileNamed:"MainMenu") as MainMenu!
-            scene.scaleMode = .AspectFill
+            scene.scaleMode = .AspectFit
             skview.presentScene(scene)
         })
         
@@ -57,7 +57,7 @@ class HighScore: SKScene {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches{
             let pt = touch.locationInNode(self)
-            if (nodeAtPoint(pt) == returnBtn)
+            if (nodeAtPoint(pt) == returnBtn || nodeAtPoint(pt).name == "returnBtns")
             {
                 self.runAction(returnback)
                 

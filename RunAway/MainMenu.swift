@@ -17,7 +17,7 @@ class MainMenu:SKScene{
 //    var highScoreButton: SKLabelNode!
     var startGame:SKAction!
     var highscoreScene: SKAction!
-    var settings:SKAction!
+    var instructions:SKAction!
     
     override func didMoveToView(view: SKView)
     {
@@ -28,19 +28,19 @@ class MainMenu:SKScene{
         startGame = SKAction.runBlock({
             let skview = self.view as SKView!
             let scene = GameScene(fileNamed:"GameScene") as GameScene!
-            scene.scaleMode = .AspectFill
+            scene.scaleMode = .AspectFit
             skview.presentScene(scene)
         })
         highscoreScene = SKAction.runBlock({
             let skview = self.view as SKView!
             let scene = HighScore(fileNamed:"HighScoreScene") as HighScore!
-            scene.scaleMode = .AspectFill
+            scene.scaleMode = .AspectFit
             skview.presentScene(scene)
         })
-        settings = SKAction.runBlock({
+        instructions = SKAction.runBlock({
             let skview = self.view as SKView!
-            let scene = GameScene(fileNamed:"GameScene") as GameScene!
-            scene.scaleMode = .AspectFill
+            let scene = TutMenu(fileNamed:"Tut") as TutMenu!
+            scene.scaleMode = .AspectFit
             skview.presentScene(scene)
         })
     }
@@ -58,8 +58,9 @@ class MainMenu:SKScene{
                 self.runAction(highscoreScene)
                 return
             }
-            else if (nodeAtPoint(pt).name == "settings" || nodeAtPoint(pt).name == "settingsButton")
+            else if (nodeAtPoint(pt).name == "instructionsLabel" || nodeAtPoint(pt).name == "instructionsBtn")
             {
+                self.runAction(instructions)
                 return
             }
             else

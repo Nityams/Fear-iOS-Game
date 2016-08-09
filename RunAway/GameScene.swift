@@ -24,6 +24,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    var isPlayed: Int = NSUserDefaults.standardUserDefaults().integerForKey("isPlayed") ?? 0 {
+        didSet {
+            NSUserDefaults.standardUserDefaults().setObject(isPlayed, forKey:"isPlayed")
+            // Saves to disk immediately, otherwise it will save when it has time
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }// used int instead of Bool -> unable to use bool
+    
+    
     var missionReport = MissionReport()
     
     var gameState:State = .Paused
@@ -98,7 +107,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel:SKLabelNode!
     
     var isAtGround: Bool = true
-    var tempLabel: SKLabelNode?
     
     var gameOverScene:SKAction!
     //  var ambientColor: UIColor?
@@ -166,12 +174,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* Reset Run Block */
         
             gameOverScene = SKAction.runBlock({
+                self.isPlayed += 1
             let skView = self.view as SKView!
             
             let scene = GameOver(fileNamed: "GameOver") as GameOver!
             scene.score = self.score
             scene.levelCompelete = self.missionComplete
-            scene.scaleMode = .AspectFill
+            scene.scaleMode = .AspectFit
             skView.presentScene(scene)
         })
         
@@ -179,10 +188,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         menuScene = SKAction.runBlock({
             let skView = self.view as SKView!
             let scene = MainMenu(fileNamed: "MainMenu") as MainMenu!
-            scene.scaleMode = .AspectFill
+            scene.scaleMode = .AspectFit
             skView.presentScene(scene)
         })
         
+        let tutorialScene = SKAction.runBlock({
+           
+            let skView = self.view as SKView!
+            let scene = Tut(fileNamed:"Tut") as Tut!
+            scene.scaleMode = .AspectFit
+            skView.presentScene(scene)
+        })
+        
+        if self.isPlayed == 0
+        {
+            print("is Played: \(isPlayed)")
+            self.isPlayed += 1
+            self.runAction(tutorialScene)
+        }
         
         
         //    ambientColor = UIColor.darkGrayColor()
@@ -288,7 +311,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     ghostCreepIn()
                 
                 let pt = touch.locationInNode(self)
-                if (nodeAtPoint(pt).name == "menu")
+                if (nodeAtPoint(pt).name == "menu" || nodeAtPoint(pt) == menuBtn)
                 {
                     self.runAction(menuScene)
                 }
@@ -320,7 +343,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         totalMegaLantern += 1
                         heroPowerUp(-4)
                         superHeroUp()
-                        flameCount -= 10
+                        flameCount = 0
                         if flameCount < 10
                         {
                         megaLantern.zPosition = -1
@@ -572,7 +595,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
                 let randomNumber = 20
                 
-                if randomNumber >= 19
+                if randomNumber >= 18
                 {
                     addObstacle(4) // trees
                 }
@@ -724,6 +747,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ghostReset(ghostTimer)
         
         /* Effects #3 */
+        scoreCounter = 1
         obstacleDisappear()
     }
     func resume()
@@ -807,17 +831,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ghostSpawnTimer = 0
         }
         
-        if potionSpawnTimer > 7       //flame spawn
+        if flameCount < 10
         {
-            let resourchPath = NSBundle.mainBundle().pathForResource("Boost", ofType: "sks")
-            let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
-            box.position = self.convertPoint(CGPoint(x: 600, y: 176), toNode: groundScroll)
-            groundScroll.addChild(box)
-            
-            //
-            potionSpawnTimer = 0
-            return
-            
+            if potionSpawnTimer > 7       //flame spawn
+            {
+                let resourchPath = NSBundle.mainBundle().pathForResource("Boost", ofType: "sks")
+                let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
+                box.position = self.convertPoint(CGPoint(x: 600, y: 176), toNode: groundScroll)
+                groundScroll.addChild(box)
+                
+                //
+                potionSpawnTimer = 0
+                return
+            }
         }
         
         if flameCount < 10            // i.e, if SuperLantern is complete== less regular lantern

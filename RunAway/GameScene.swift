@@ -70,7 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lanternSpawnTimer: CFTimeInterval = 0
     var ghostSpawnTimer: CFTimeInterval = -5
     var boostSpawnTimer: CFTimeInterval = 0
-    var generalLanternTimeCounter:CFTimeInterval = 21
+    var generalLanternTimeCounter:CFTimeInterval = 23
     
     var originalGravity:CGFloat!
     
@@ -338,6 +338,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 {
                     megaLantern.zPosition = 3
                     lanternFlame.zPosition = 2
+                    
                     if(nodeAtPoint(pt).name == "lanternBig")
                     {
                         totalMegaLantern += 1
@@ -572,7 +573,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             scoreLabel.text = String(score)
 
-            if hero.parent?.position.x < -20
+            //if hero.parent?.position.x < -20
+            if hero.position.x < -370
             {
                 gameState = .GameOver
                 return;
@@ -848,12 +850,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if flameCount < 10            // i.e, if SuperLantern is complete== less regular lantern
         {
-            generalLanternTimeCounter = 17
+            generalLanternTimeCounter = 19
             
         }
         else
         {
-            generalLanternTimeCounter = 23
+            generalLanternTimeCounter = 25
         }
         
         if lanternSpawnTimer > generalLanternTimeCounter   //lantern spawn

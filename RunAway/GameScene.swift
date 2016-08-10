@@ -591,17 +591,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if scoreCounter % obsSpawn == 0
             {
-//                let randomNumber = Int(arc4random_uniform(UInt32(20)))
-    
-                let randomNumber = 20
+                let randomNumber = Int(arc4random_uniform(UInt32(20)))
+                print("randomnumber: \(randomNumber)")
+//                let randomNumber = 6
                 
                 if randomNumber >= 18
                 {
-                    addObstacle(4) // trees
+                    addObstacle(5) // flying bats
                 }
                 else if randomNumber >= 17
                 {
-                    addObstacle(5)  // floating box
+                    addObstacle(4)  // floating box2
                 }
                 else if randomNumber >= 14
                 {
@@ -879,14 +879,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      @func: adds type of boxes to the game scene
      @param: x == 1 for Box1.sks
      x == 2 for Box2.sks
-     x == 3 for Box3.sks
+     x == 3 for Box4.sks
+     x == 4 for Box Floating box 2
+     x == 5 for Flying Bat
      */
     func addObstacle(x: Int)
     {
         var resourcePath:String!
         var box:SKReferenceNode!
-        if x <= 4{
-            
+        if x < 4{
             if x == 1{
                 resourcePath = NSBundle.mainBundle().pathForResource("Box1", ofType: "sks")
             }
@@ -895,37 +896,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             else if x == 3{
                 resourcePath = NSBundle.mainBundle().pathForResource("Box4", ofType: "sks")
-                //      addDummyBox()
             }
-            else if score > 3 //77
-            {
-                resourcePath = NSBundle.mainBundle().pathForResource("treeSlide", ofType: "sks")
-                totalTrees += 1
+            else{
+                // blank space
+                resourcePath = NSBundle.mainBundle().pathForResource("Dummy", ofType: "sks")
             }
-            else
-            {
-            resourcePath = NSBundle.mainBundle().pathForResource("Dummy", ofType: "sks")
-            }
+            
             box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath!))
             box.position = self.convertPoint(CGPoint(x: 600, y: 70), toNode: groundScroll)
-            
+            box.setScale(1)
         }
-//        else if x == 6
-//        {
-//            resourcePath = NSBundle.mainBundle().pathForResource("Box2", ofType: "sks")
-//            box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath))
-//            
-//            box.position = self.convertPoint(CGPoint(x: 600, y: 108), toNode: groundScroll)
-//            box.setScale(0.75)
-//        }
-        else
+        else if x == 4
         {
-            // flyinh box
             resourcePath = NSBundle.mainBundle().pathForResource("Box2", ofType: "sks")
+            totalTrees += 1
             box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath))
-            
             box.position = self.convertPoint(CGPoint(x: 600, y: 108), toNode: groundScroll)
             box.setScale(0.75)
+            
+        }
+        else
+        {
+            // flying box if x == 5
+            resourcePath = NSBundle.mainBundle().pathForResource("Bats", ofType: "sks")
+            box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath))
+            
+            box.position = self.convertPoint(CGPoint(x: 600, y: 78), toNode: groundScroll)
+            box.setScale(1.5)
         }
         groundScroll.addChild(box)
         
@@ -958,7 +955,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let groundposition = cloudScroll.convertPoint(ground.position, toNode: self)
             if groundposition.x <= -ground.size.width/2
             {
-                let newPosition = CGPointMake((self.size.width/2) + ground.size.width , groundposition.y)
+                let newPosition = CGPointMake((self.size.width/2) + ground.size.width + 1 , groundposition.y)
                 ground.position = self.convertPoint(newPosition, toNode: cloudScroll)
             }
         }

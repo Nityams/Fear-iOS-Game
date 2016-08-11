@@ -347,8 +347,8 @@
 				C8D00E0F1D3D4BAC00DC3FEB /* Box2.sks */,
 				C8D00E111D3D4BDC00DC3FEB /* Lantern.sks */,
 				C80BE10A1D42D17400064567 /* Box4.sks */,
-				C8306A781D5509F3001BEB3A /* Scenes */,
 				C801D16E1D5C0320002CC7AA /* Tree.sks */,
+				C8306A781D5509F3001BEB3A /* Scenes */,
 			);
 			name = SKS;
 			sourceTree = "<group>";

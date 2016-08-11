@@ -43,6 +43,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var groundScroll: SKNode!
     var cloudScroll: SKNode!
     var backScroll: SKNode!
+    var treeScroll: SKNode!
     var hero: SKSpriteNode!
     var ghost: SKSpriteNode!
     
@@ -119,6 +120,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         groundScroll = self.childNodeWithName("groundScroll")
         cloudScroll = self.childNodeWithName("cloudScroll")
         backScroll = self.childNodeWithName("backScroll")
+        treeScroll = self.childNodeWithName("treeScroll")
         menuBtn = self.childNodeWithName("//menubtn") as! SKSpriteNode
         
         megaLantern = self.childNodeWithName("//lanternBig") as! SKSpriteNode
@@ -623,7 +625,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             updateCloudScroll()
             updateBackScroll()
             updateObstacles()
-            
+            updateTrees()
             scoreCounter += 1
         }
     }
@@ -979,6 +981,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 ground.position = self.convertPoint(newPosition, toNode: backScroll)
             }
         }
-    }    
+    }
+    func updateTrees()
+    {
+        if scoreCounter % 437 == 39
+    {
+        let resourcePath = NSBundle.mainBundle().pathForResource("Tree", ofType: "sks")
+        let tree = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath!))
+        tree.position = self.convertPoint(CGPoint(x: 600, y: 0), toNode: treeScroll)
+        treeScroll.addChild(tree)
+        }
+
+        treeScroll.position.x -= scrollSpeed * CGFloat(fixedDelta)*1.5
+        
+    }
     
 }

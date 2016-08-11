@@ -14,7 +14,6 @@ class HighScore: SKScene {
     var distance:Int = NSUserDefaults.standardUserDefaults().integerForKey("distance") ?? 0 {
         didSet {
             NSUserDefaults.standardUserDefaults().setInteger(distance, forKey:"distance")
-            // Saves to disk immediately, otherwise it will save when it has time
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
@@ -22,7 +21,6 @@ class HighScore: SKScene {
     var score:Int = NSUserDefaults.standardUserDefaults().integerForKey("score") ?? 0 {
         didSet {
             NSUserDefaults.standardUserDefaults().setInteger(score, forKey:"score")
-            // Saves to disk immediately, otherwise it will save when it has time
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }

@@ -10,11 +10,6 @@ import Foundation
 
 class MissionReport{
     
-//    var name = ""
-//    init(name: String)
-//    {
-//        self.name = name;
-//    }
     
     /*
      MISSION REPORT:
@@ -69,7 +64,6 @@ class MissionReport{
     
     func missionCheck(missionNumber: Int, value: Int) -> Bool
     {
-        //var checkInt = missionNumber % 4
         switch missionNumber {
         case 1:
             if value >= 7

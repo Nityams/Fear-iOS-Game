@@ -46,8 +46,6 @@ class GameOver:SKScene
         
         for _ in touches
         {
-           // if touchCount >= 1
-            //{
                 let scene = HighScore(fileNamed: "HighScoreScene") as HighScore!
                 if scene.score < totalScore
                 {
@@ -55,20 +53,7 @@ class GameOver:SKScene
                 }
                 
                 self.runAction(gameReset)
-            //}
-//            else
-//            {
-//                missionScoreLabel.text = String (missionScore)
-//                missionScoreLabel.zPosition = 1
-//                scoreLabel.zPosition = 1
-//                totalScoreLabel.text = String(totalScore)
-//                totalScoreLabel.zPosition = 1
-//                labels1.zPosition = 1
-//                labels2.zPosition = 1
-//                labels3.zPosition = 1
-//                touchCount += 1
-//            }
-        }
+                 }
     }
     
     override func update(currentTime: NSTimeInterval) {

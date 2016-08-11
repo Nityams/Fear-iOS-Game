@@ -8,6 +8,7 @@
 
 import SpriteKit
 import Foundation
+import AVFoundation
 
 enum State{
     case Active, Paused, GameOver, LanternGlow
@@ -19,7 +20,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var missionNumber:Int = NSUserDefaults.standardUserDefaults().integerForKey("mNumber") {
         didSet {
             NSUserDefaults.standardUserDefaults().setInteger(missionNumber, forKey:"mNumber")
-            // Saves to disk immediately, otherwise it will save when it has time
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
@@ -27,17 +27,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isPlayed: Int = NSUserDefaults.standardUserDefaults().integerForKey("isPlayed") ?? 0 {
         didSet {
             NSUserDefaults.standardUserDefaults().setObject(isPlayed, forKey:"isPlayed")
-            // Saves to disk immediately, otherwise it will save when it has time
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }// used int instead of Bool -> unable to use bool
-    
-    
+ 
     var missionReport = MissionReport()
     
     var gameState:State = .Paused
     var missionLabel: SKLabelNode!
- //   var titeLabel: SKLabelNode!
     var missionBoard:SKSpriteNode!
     var missionHide: SKAction!
     var missionComplete: Bool = false
@@ -88,6 +85,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var jumpImpulse:CGFloat = 18
     var flameLabel:SKLabelNode!
+    var flamepic: SKNode!
+    var flameLabels: SKLabelNode!
     
     var megaLantern:SKSpriteNode!
     var lanternFlame: SKEmitterNode!
@@ -109,10 +108,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isAtGround: Bool = true
     
     var gameOverScene:SKAction!
-    //  var ambientColor: UIColor?
+    let sound = SKAction.playSoundFileNamed("helter_Skelter11", waitForCompletion: false)
+    var ghostSound:Bool = true
+    
     
     override func didMoveToView(view: SKView)
     {
+        
         physicsWorld.contactDelegate = self
         groundScroll = self.childNodeWithName("groundScroll")
         cloudScroll = self.childNodeWithName("cloudScroll")
@@ -131,8 +133,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ghost = self.childNodeWithName("//ghost") as! SKSpriteNode
         scoreLabel = self.childNodeWithName("scoreLabel") as! SKLabelNode
         flameLabel = self.childNodeWithName("flameLabel") as! SKLabelNode
+        flamepic = self.childNodeWithName("flamePic")
+        flameLabels = self.childNodeWithName("flameLabels") as! SKLabelNode
         
-//        titeLabel = self.childNodeWithName("//titleLabel") as! SKLabelNode
+
         missionLabel = self.childNodeWithName("//missionLabel") as! SKLabelNode
         missionBoard = self.childNodeWithName("missionBoard") as! SKSpriteNode
         
@@ -174,7 +178,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* Reset Run Block */
         
             gameOverScene = SKAction.runBlock({
-                self.isPlayed += 1
+            self.isPlayed += 1
             let skView = self.view as SKView!
             
             let scene = GameOver(fileNamed: "GameOver") as GameOver!
@@ -206,12 +210,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.isPlayed += 1
             self.runAction(tutorialScene)
         }
-        
-        
-        //    ambientColor = UIColor.darkGrayColor()
-//        initSprite()
-//        initLight()
-        
     }
     
     func swipedRight(sender:UISwipeGestureRecognizer){
@@ -281,20 +279,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hero.yScale = 0.96
         
         totalSlides += 1
-        // physics body doesn't change during slide and hero flies
         
         print("hero texture changed")
     }
     
-    /*
-    func initSprite(){
-        
-    }
-    func initLight()
-    {
-        //www.codeandweb.com/spriteilluminator/tutorials/spritekit-dynamic-light-tutorial
-    }
-    */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
     {
         for touch in touches
@@ -338,6 +326,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 {
                     megaLantern.zPosition = 3
                     lanternFlame.zPosition = 2
+                    flamepic.zPosition = -1
+                    flameLabel.zPosition = -1
+                    flameLabels.zPosition = -1
                     
                     if(nodeAtPoint(pt).name == "lanternBig")
                     {
@@ -349,6 +340,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         {
                         megaLantern.zPosition = -1
                         lanternFlame.zPosition = -1
+                            flamepic.zPosition = 3
+                            flameLabel.zPosition = 3
+                            flameLabels.zPosition = 3
                         }
                     }
                 }
@@ -384,10 +378,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         switch x {
         case 1:
+            ghostSound = true
             backPart1.runAction(SKAction.fadeOutWithDuration(2))
         case 2:
+            if ghostSound == true{
+            ghost.runAction(sound)
+            ghostSound = false
+            }
             backPart2.runAction(SKAction.fadeOutWithDuration(2))
         case 3:
+            ghostSound = false
             backPart3.runAction(SKAction.fadeOutWithDuration(2))
             light1.falloff += 0.5
         case 4:
@@ -516,8 +516,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if gameState == .Active{
             
             menuBtn.runAction(SKAction.moveToX(-60, duration: 0.4))
-            missionBoard.runAction(SKAction.moveToY(450, duration: 0.3))
-                
+            missionBoard.runAction(SKAction.moveToY(550, duration: 0.3))
+            
             if ghost.position.x > 319
             {
                 lightsDrama(11)
@@ -923,7 +923,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             resourcePath = NSBundle.mainBundle().pathForResource("Bats", ofType: "sks")
             box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath))
             
-            box.position = self.convertPoint(CGPoint(x: 600, y: 78), toNode: groundScroll)
+            box.position = self.convertPoint(CGPoint(x: 600, y: 68), toNode: groundScroll)
             box.setScale(1.5)
         }
         groundScroll.addChild(box)

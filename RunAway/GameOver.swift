@@ -36,7 +36,7 @@ class GameOver:SKScene
             let skView = self.view as SKView!
             
             let scene = GameScene(fileNamed: "GameScene") as GameScene!
-            scene.scaleMode = .AspectFill
+            scene.scaleMode = .AspectFit
             skView.presentScene(scene)
         })
         
@@ -44,25 +44,16 @@ class GameOver:SKScene
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
-        for touch in touches
+        for _ in touches
         {
-            if touchCount >= 1
-            {
+                let scene = HighScore(fileNamed: "HighScoreScene") as HighScore!
+                if scene.score < totalScore
+                {
+                    scene.score = totalScore
+                }
+                
                 self.runAction(gameReset)
-            }
-            else
-            {
-                missionScoreLabel.text = String (missionScore)
-                missionScoreLabel.zPosition = 1
-                scoreLabel.zPosition = 1
-                totalScoreLabel.text = String(totalScore)
-                totalScoreLabel.zPosition = 1
-                labels1.zPosition = 1
-                labels2.zPosition = 1
-                labels3.zPosition = 1
-                touchCount += 1
-            }
-        }
+                 }
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -77,5 +68,17 @@ class GameOver:SKScene
         {
             totalScore = score
         }
+        
+        
+        missionScoreLabel.text = String (missionScore)
+        missionScoreLabel.zPosition = 1
+        scoreLabel.zPosition = 1
+        totalScoreLabel.text = String(totalScore)
+        totalScoreLabel.zPosition = 1
+        labels1.zPosition = 1
+        labels2.zPosition = 1
+        labels3.zPosition = 1
+        touchCount += 1
+
     }
 }

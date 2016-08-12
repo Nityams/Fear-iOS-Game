@@ -1,0 +1,877 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B7E0D4903457CB68E3E662FA9AA8C43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		12ABDFBB87D1FF3DC79F03DBB9956269 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		262F8582DE4718DCAF48A6CE3CA02C19 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B1FEA38853C70DAE679E0189373D64 /* Logger.swift */; };
+		2986B7DCEC1B91C426FC00A8410BD8C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		3BC21B77C6B310E015BD51732EA3BB20 /* PrintLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C3181D91FBE233C5ED381C2AD9885 /* PrintLogging.swift */; };
+		48E185C0F97C44550E32D81C31EFB021 /* MixpanelInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04620B384FDE4F2C7299210BF096DB2C /* MixpanelInstance.swift */; };
+		5E408DE1C9065F4BD03BFD16F705246C /* Pods-Fear-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 51E338072913891FFD8F9A98245108F6 /* Pods-Fear-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60BEAF680DE64CF2DBE5A6CCD7CAE0F9 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8298D0D956B36C2E911B99B30E466A0 /* Track.swift */; };
+		66C9395478322B1DBB95099C325EB654 /* FileLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09818D355E4DDC92EB0D113BC90E632 /* FileLogging.swift */; };
+		7AD12A552B8424C05E44DC56FD553A49 /* Pods-FearTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CC6EAE9F683943346EC90A3545941DED /* Pods-FearTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C0C1424FD9B5E3CFEFBD2EDCB12627F /* FlushRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0C506A2BBED9FA22220D0A5F7E6BFE /* FlushRequest.swift */; };
+		849B307259278A3A3A06601773D12F67 /* Mixpanel-swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AAAD541EBD35A6B833269AB32E14A2 /* Mixpanel-swift-dummy.m */; };
+		8E5DAC8B7F6F680BB3A92644A61F0D13 /* Pods-FearUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FE3CDB4CEBE5758300763FB0FD27E2 /* Pods-FearUITests-dummy.m */; };
+		945C1A588AA1DE4E4C0F5D9FD0573BB5 /* Pods-FearUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FF58783765DB3B020FB389959DC0453 /* Pods-FearUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A1CBCB42F13C83C43D6D6F295F29E34 /* AutomaticProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6194D641CE72CFE6367EC9483AEFAA1 /* AutomaticProperties.swift */; };
+		A7A7B2ED6E22B4C4357EAAF3A1F633D1 /* Flush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C2D224D8A12A8B1436B229129333D2 /* Flush.swift */; };
+		A82FE0B23787C057E6DB45063744B38C /* JSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993C2CA4FA2FF48B8CA3C904ACF65A1D /* JSONHandler.swift */; };
+		B59932658A059A1230E215F470082F22 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD76A8488BB866FCDDF1C4F8BB900F6D /* Error.swift */; };
+		B68EF510EF521B6A02F8772BA736FE26 /* Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96A0ECBE7491869CA83A9689B11A75 /* Mixpanel.swift */; };
+		B6EDF5AF673F24A071C987A630C8EF82 /* Pods-FearTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9694567E7E1A58342F69B6EB187159 /* Pods-FearTests-dummy.m */; };
+		B745E7DD1FCDD4947D1D2844FB23681A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A28A6CFB44F265E44F36FB7E4E48BC /* Persistence.swift */; };
+		B837250DB7B4EA814864859B622E1A32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		CFD0A409E8F4B9798CFA72EAEC24521F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FEC198A5FCA56A16590E12D6977B81 /* Network.swift */; };
+		D017EC3CB2CBB0A9B1C90D7193A6B2D6 /* Pods-Fear-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3ABE0132FE61A56C514F621E67472A /* Pods-Fear-dummy.m */; };
+		D328D1B393ECD2284976EBFC51ECBC6B /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFBCD20AF8E53143279D797C06920C0 /* People.swift */; };
+		EA96B65256A388918B7B486C890AB396 /* Mixpanel-swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ECE31D9D464C5F27F3BB3140C9EF33EB /* Mixpanel-swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE5C6605142A4E95CFA762B8802B6527 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A921E6ED76CD64B984E03B43144C038E /* Constants.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		379538DB89620C7A882A5E988CDF3E39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33A15922D9CFBB1ED72A42B512587636;
+			remoteInfo = "Mixpanel-swift";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04620B384FDE4F2C7299210BF096DB2C /* MixpanelInstance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MixpanelInstance.swift; path = Mixpanel/MixpanelInstance.swift; sourceTree = "<group>"; };
+		0872BFAB1C3CEDE86DEA5BB0EFE7C1A0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D937450C9396842A404F1E85E36D8EB /* Pods-FearTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FearTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0FBA2D0D1DA9979236BB9A063B96AC4C /* Pods-FearUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FearUITests-frameworks.sh"; sourceTree = "<group>"; };
+		12C2D224D8A12A8B1436B229129333D2 /* Flush.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Flush.swift; path = Mixpanel/Flush.swift; sourceTree = "<group>"; };
+		31F6BFE87E302CF4342D5891E1768A74 /* Pods-FearUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FearUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		36401A9A4E54CAB4F1EF42E1F0E92CFC /* Pods-Fear-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Fear-acknowledgements.plist"; sourceTree = "<group>"; };
+		3C9971E0B6F17C5879F68FB6E336EDA8 /* Pods-FearTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FearTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		51E338072913891FFD8F9A98245108F6 /* Pods-Fear-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Fear-umbrella.h"; sourceTree = "<group>"; };
+		533FAA9E6D4891B05CF6A610D8EFFBD3 /* Pods-Fear-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Fear-frameworks.sh"; sourceTree = "<group>"; };
+		57139C869E19F21C851368D99AD64583 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58E9B70129F42ED122A522EC7D5B1D35 /* Pods-Fear-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Fear-resources.sh"; sourceTree = "<group>"; };
+		6BB902ED2E4F072D693A3AC0DB9DC277 /* Pods-FearUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FearUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6C0134770E287C30A2197D294C6BE95C /* Pods_FearUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FearUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C828D55C0835E9EE9D667BE8C96F59E /* Pods-FearTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FearTests.release.xcconfig"; sourceTree = "<group>"; };
+		74AAAD541EBD35A6B833269AB32E14A2 /* Mixpanel-swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Mixpanel-swift-dummy.m"; sourceTree = "<group>"; };
+		78C3C395AC52B138D285EEF3D445A514 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C0C506A2BBED9FA22220D0A5F7E6BFE /* FlushRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FlushRequest.swift; path = Mixpanel/FlushRequest.swift; sourceTree = "<group>"; };
+		7E9694567E7E1A58342F69B6EB187159 /* Pods-FearTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FearTests-dummy.m"; sourceTree = "<group>"; };
+		8041F6E5C2C86A02EF542E67577C03BE /* Pods-FearUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-FearUITests.modulemap"; sourceTree = "<group>"; };
+		85406784637413FF857D6620A7EFD887 /* Pods-FearTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FearTests-frameworks.sh"; sourceTree = "<group>"; };
+		8BC5C22D9129899FF4673560236712B3 /* Pods-FearTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FearTests-resources.sh"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		949887908E25F3A754A7E193963D070C /* Pods_FearTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FearTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		993C2CA4FA2FF48B8CA3C904ACF65A1D /* JSONHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSONHandler.swift; path = Mixpanel/JSONHandler.swift; sourceTree = "<group>"; };
+		9C96A0ECBE7491869CA83A9689B11A75 /* Mixpanel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Mixpanel.swift; path = Mixpanel/Mixpanel.swift; sourceTree = "<group>"; };
+		9EB1268CD6B528C6DA17830BAE64A460 /* Mixpanel-swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Mixpanel-swift.modulemap"; sourceTree = "<group>"; };
+		9F463D65F99865443D6108E07D02BF38 /* Pods-Fear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Fear.release.xcconfig"; sourceTree = "<group>"; };
+		9FF58783765DB3B020FB389959DC0453 /* Pods-FearUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FearUITests-umbrella.h"; sourceTree = "<group>"; };
+		A8298D0D956B36C2E911B99B30E466A0 /* Track.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Track.swift; path = Mixpanel/Track.swift; sourceTree = "<group>"; };
+		A921E6ED76CD64B984E03B43144C038E /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Mixpanel/Constants.swift; sourceTree = "<group>"; };
+		AEFBCD20AF8E53143279D797C06920C0 /* People.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = People.swift; path = Mixpanel/People.swift; sourceTree = "<group>"; };
+		AF0D11746B03A866EFA2B84C8213DF3F /* Pods-FearTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-FearTests.modulemap"; sourceTree = "<group>"; };
+		AF47A904D2A867A7CCA76D31BCD7BE9F /* Pods-FearUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FearUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B13D4E12E9B669B569FCF8B0A3A4A630 /* Pods-Fear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Fear.debug.xcconfig"; sourceTree = "<group>"; };
+		B2A28A6CFB44F265E44F36FB7E4E48BC /* Persistence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Persistence.swift; path = Mixpanel/Persistence.swift; sourceTree = "<group>"; };
+		B9BD3AFB9E1C07E4FD9F9818B62531B3 /* Pods-FearTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FearTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BBA1D516BD68586D95BB0A13FF18B509 /* Mixpanel-swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mixpanel-swift-prefix.pch"; sourceTree = "<group>"; };
+		C0FEC198A5FCA56A16590E12D6977B81 /* Network.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Network.swift; path = Mixpanel/Network.swift; sourceTree = "<group>"; };
+		C23E06383E33A2BEBAC69E4863A84E42 /* Pods-Fear-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Fear-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C758C09C984A66A48B05261FA71BD5DF /* Pods-Fear.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Fear.modulemap"; sourceTree = "<group>"; };
+		C764C414560803996FDD2ADCB768AB20 /* Pods-FearUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FearUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C85AF372367D8E32B7A9A19CE598EF4A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9D903158D1DF96C772D5A578B1852FB /* Mixpanel-swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Mixpanel-swift.xcconfig"; sourceTree = "<group>"; };
+		CC6EAE9F683943346EC90A3545941DED /* Pods-FearTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FearTests-umbrella.h"; sourceTree = "<group>"; };
+		CD76A8488BB866FCDDF1C4F8BB900F6D /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Mixpanel/Error.swift; sourceTree = "<group>"; };
+		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CF7C3181D91FBE233C5ED381C2AD9885 /* PrintLogging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrintLogging.swift; path = Mixpanel/PrintLogging.swift; sourceTree = "<group>"; };
+		D1CE1C0FBACB4A2903869C530861E164 /* Pods_Fear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3B1FEA38853C70DAE679E0189373D64 /* Logger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Mixpanel/Logger.swift; sourceTree = "<group>"; };
+		D6194D641CE72CFE6367EC9483AEFAA1 /* AutomaticProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutomaticProperties.swift; path = Mixpanel/AutomaticProperties.swift; sourceTree = "<group>"; };
+		D85BBB4E478424C900681A7F407EE6EC /* Pods-FearUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FearUITests-resources.sh"; sourceTree = "<group>"; };
+		E7FE3CDB4CEBE5758300763FB0FD27E2 /* Pods-FearUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FearUITests-dummy.m"; sourceTree = "<group>"; };
+		ECE31D9D464C5F27F3BB3140C9EF33EB /* Mixpanel-swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mixpanel-swift-umbrella.h"; sourceTree = "<group>"; };
+		F09818D355E4DDC92EB0D113BC90E632 /* FileLogging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileLogging.swift; path = Mixpanel/FileLogging.swift; sourceTree = "<group>"; };
+		F188136325E2F01D74A8C372023EE12A /* Mixpanel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mixpanel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC3ABE0132FE61A56C514F621E67472A /* Pods-Fear-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Fear-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01A210F513222773AF543A16C6528ABF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B837250DB7B4EA814864859B622E1A32 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B1253CC7EC245C622A30E1288AA85EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12ABDFBB87D1FF3DC79F03DBB9956269 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59CBE7550A0FC373FE41207775FF9271 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2986B7DCEC1B91C426FC00A8410BD8C2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B93CA1BA0FF57066B91E814BEBB2E2DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B7E0D4903457CB68E3E662FA9AA8C43 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14BF040DE484383637C7DA261E7B92EA /* Pods-FearUITests */ = {
+			isa = PBXGroup;
+			children = (
+				57139C869E19F21C851368D99AD64583 /* Info.plist */,
+				8041F6E5C2C86A02EF542E67577C03BE /* Pods-FearUITests.modulemap */,
+				6BB902ED2E4F072D693A3AC0DB9DC277 /* Pods-FearUITests-acknowledgements.markdown */,
+				31F6BFE87E302CF4342D5891E1768A74 /* Pods-FearUITests-acknowledgements.plist */,
+				E7FE3CDB4CEBE5758300763FB0FD27E2 /* Pods-FearUITests-dummy.m */,
+				0FBA2D0D1DA9979236BB9A063B96AC4C /* Pods-FearUITests-frameworks.sh */,
+				D85BBB4E478424C900681A7F407EE6EC /* Pods-FearUITests-resources.sh */,
+				9FF58783765DB3B020FB389959DC0453 /* Pods-FearUITests-umbrella.h */,
+				C764C414560803996FDD2ADCB768AB20 /* Pods-FearUITests.debug.xcconfig */,
+				AF47A904D2A867A7CCA76D31BCD7BE9F /* Pods-FearUITests.release.xcconfig */,
+			);
+			name = "Pods-FearUITests";
+			path = "Target Support Files/Pods-FearUITests";
+			sourceTree = "<group>";
+		};
+		37294CC4B324FD27809408633802F28E /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DC6F0B236D5F02575ADED6DC7CDA72D5 /* Pods-Fear */,
+				86F7DD03AB9655EAD39C2B80FC852AEA /* Pods-FearTests */,
+				14BF040DE484383637C7DA261E7B92EA /* Pods-FearUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		4D748303C450BD00975F8687B6740314 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B6624263597F0DD455850DC2E8A3920E /* Mixpanel-swift */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				4D748303C450BD00975F8687B6740314 /* Pods */,
+				E87427A1229EE5F90516583711C035AA /* Products */,
+				37294CC4B324FD27809408633802F28E /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		86F7DD03AB9655EAD39C2B80FC852AEA /* Pods-FearTests */ = {
+			isa = PBXGroup;
+			children = (
+				78C3C395AC52B138D285EEF3D445A514 /* Info.plist */,
+				AF0D11746B03A866EFA2B84C8213DF3F /* Pods-FearTests.modulemap */,
+				B9BD3AFB9E1C07E4FD9F9818B62531B3 /* Pods-FearTests-acknowledgements.markdown */,
+				3C9971E0B6F17C5879F68FB6E336EDA8 /* Pods-FearTests-acknowledgements.plist */,
+				7E9694567E7E1A58342F69B6EB187159 /* Pods-FearTests-dummy.m */,
+				85406784637413FF857D6620A7EFD887 /* Pods-FearTests-frameworks.sh */,
+				8BC5C22D9129899FF4673560236712B3 /* Pods-FearTests-resources.sh */,
+				CC6EAE9F683943346EC90A3545941DED /* Pods-FearTests-umbrella.h */,
+				0D937450C9396842A404F1E85E36D8EB /* Pods-FearTests.debug.xcconfig */,
+				6C828D55C0835E9EE9D667BE8C96F59E /* Pods-FearTests.release.xcconfig */,
+			);
+			name = "Pods-FearTests";
+			path = "Target Support Files/Pods-FearTests";
+			sourceTree = "<group>";
+		};
+		8D80F18E1EAB95F61E2CE6588A5DCCE1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C85AF372367D8E32B7A9A19CE598EF4A /* Info.plist */,
+				9EB1268CD6B528C6DA17830BAE64A460 /* Mixpanel-swift.modulemap */,
+				C9D903158D1DF96C772D5A578B1852FB /* Mixpanel-swift.xcconfig */,
+				74AAAD541EBD35A6B833269AB32E14A2 /* Mixpanel-swift-dummy.m */,
+				BBA1D516BD68586D95BB0A13FF18B509 /* Mixpanel-swift-prefix.pch */,
+				ECE31D9D464C5F27F3BB3140C9EF33EB /* Mixpanel-swift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Mixpanel-swift";
+			sourceTree = "<group>";
+		};
+		B6624263597F0DD455850DC2E8A3920E /* Mixpanel-swift */ = {
+			isa = PBXGroup;
+			children = (
+				D6194D641CE72CFE6367EC9483AEFAA1 /* AutomaticProperties.swift */,
+				A921E6ED76CD64B984E03B43144C038E /* Constants.swift */,
+				CD76A8488BB866FCDDF1C4F8BB900F6D /* Error.swift */,
+				F09818D355E4DDC92EB0D113BC90E632 /* FileLogging.swift */,
+				12C2D224D8A12A8B1436B229129333D2 /* Flush.swift */,
+				7C0C506A2BBED9FA22220D0A5F7E6BFE /* FlushRequest.swift */,
+				993C2CA4FA2FF48B8CA3C904ACF65A1D /* JSONHandler.swift */,
+				D3B1FEA38853C70DAE679E0189373D64 /* Logger.swift */,
+				9C96A0ECBE7491869CA83A9689B11A75 /* Mixpanel.swift */,
+				04620B384FDE4F2C7299210BF096DB2C /* MixpanelInstance.swift */,
+				C0FEC198A5FCA56A16590E12D6977B81 /* Network.swift */,
+				AEFBCD20AF8E53143279D797C06920C0 /* People.swift */,
+				B2A28A6CFB44F265E44F36FB7E4E48BC /* Persistence.swift */,
+				CF7C3181D91FBE233C5ED381C2AD9885 /* PrintLogging.swift */,
+				A8298D0D956B36C2E911B99B30E466A0 /* Track.swift */,
+				8D80F18E1EAB95F61E2CE6588A5DCCE1 /* Support Files */,
+			);
+			path = "Mixpanel-swift";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC6F0B236D5F02575ADED6DC7CDA72D5 /* Pods-Fear */ = {
+			isa = PBXGroup;
+			children = (
+				0872BFAB1C3CEDE86DEA5BB0EFE7C1A0 /* Info.plist */,
+				C758C09C984A66A48B05261FA71BD5DF /* Pods-Fear.modulemap */,
+				C23E06383E33A2BEBAC69E4863A84E42 /* Pods-Fear-acknowledgements.markdown */,
+				36401A9A4E54CAB4F1EF42E1F0E92CFC /* Pods-Fear-acknowledgements.plist */,
+				FC3ABE0132FE61A56C514F621E67472A /* Pods-Fear-dummy.m */,
+				533FAA9E6D4891B05CF6A610D8EFFBD3 /* Pods-Fear-frameworks.sh */,
+				58E9B70129F42ED122A522EC7D5B1D35 /* Pods-Fear-resources.sh */,
+				51E338072913891FFD8F9A98245108F6 /* Pods-Fear-umbrella.h */,
+				B13D4E12E9B669B569FCF8B0A3A4A630 /* Pods-Fear.debug.xcconfig */,
+				9F463D65F99865443D6108E07D02BF38 /* Pods-Fear.release.xcconfig */,
+			);
+			name = "Pods-Fear";
+			path = "Target Support Files/Pods-Fear";
+			sourceTree = "<group>";
+		};
+		E87427A1229EE5F90516583711C035AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F188136325E2F01D74A8C372023EE12A /* Mixpanel.framework */,
+				D1CE1C0FBACB4A2903869C530861E164 /* Pods_Fear.framework */,
+				949887908E25F3A754A7E193963D070C /* Pods_FearTests.framework */,
+				6C0134770E287C30A2197D294C6BE95C /* Pods_FearUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0BBC68C3207DD62E8C152513E9E792E4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E408DE1C9065F4BD03BFD16F705246C /* Pods-Fear-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		175FBEC676FD5D7DE5B60E5861C5FAC5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD12A552B8424C05E44DC56FD553A49 /* Pods-FearTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A95284E33190B292CFA3D8E5BF0D37D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA96B65256A388918B7B486C890AB396 /* Mixpanel-swift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6BAA29BC330C0AC55481EFCF8FE3C1E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				945C1A588AA1DE4E4C0F5D9FD0573BB5 /* Pods-FearUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		190FAA89D3D34BC6CEFEC2ADE34EE8CE /* Pods-FearUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73ACE02BB90499FC8F4CD29FBAA1E2C6 /* Build configuration list for PBXNativeTarget "Pods-FearUITests" */;
+			buildPhases = (
+				8A238833F7AB7A08B0A569BCA4C4B4D8 /* Sources */,
+				2B1253CC7EC245C622A30E1288AA85EF /* Frameworks */,
+				F6BAA29BC330C0AC55481EFCF8FE3C1E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-FearUITests";
+			productName = "Pods-FearUITests";
+			productReference = 6C0134770E287C30A2197D294C6BE95C /* Pods_FearUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		33A15922D9CFBB1ED72A42B512587636 /* Mixpanel-swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 151B292451CE51CA17267C2A450AB68F /* Build configuration list for PBXNativeTarget "Mixpanel-swift" */;
+			buildPhases = (
+				01B99B20C7814DFF8BF174EE4C51D9C0 /* Sources */,
+				B93CA1BA0FF57066B91E814BEBB2E2DA /* Frameworks */,
+				8A95284E33190B292CFA3D8E5BF0D37D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mixpanel-swift";
+			productName = "Mixpanel-swift";
+			productReference = F188136325E2F01D74A8C372023EE12A /* Mixpanel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B021801CA596D736844F20D7FA62C4F4 /* Pods-FearTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA62EB1E69DDCDE69C0710FB87ACF7AC /* Build configuration list for PBXNativeTarget "Pods-FearTests" */;
+			buildPhases = (
+				EAB81FECF9313A93514D797138BFE969 /* Sources */,
+				59CBE7550A0FC373FE41207775FF9271 /* Frameworks */,
+				175FBEC676FD5D7DE5B60E5861C5FAC5 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-FearTests";
+			productName = "Pods-FearTests";
+			productReference = 949887908E25F3A754A7E193963D070C /* Pods_FearTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B81624A6F3F13929144C06B0143FE88B /* Pods-Fear */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3885644EB399CABCA5FA9D39EAF558BB /* Build configuration list for PBXNativeTarget "Pods-Fear" */;
+			buildPhases = (
+				F9EF2630083C59D02ECA7B96BF9ACDE5 /* Sources */,
+				01A210F513222773AF543A16C6528ABF /* Frameworks */,
+				0BBC68C3207DD62E8C152513E9E792E4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				65624BBE8E93BE6372B7C106787196AB /* PBXTargetDependency */,
+			);
+			name = "Pods-Fear";
+			productName = "Pods-Fear";
+			productReference = D1CE1C0FBACB4A2903869C530861E164 /* Pods_Fear.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = E87427A1229EE5F90516583711C035AA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				33A15922D9CFBB1ED72A42B512587636 /* Mixpanel-swift */,
+				B81624A6F3F13929144C06B0143FE88B /* Pods-Fear */,
+				B021801CA596D736844F20D7FA62C4F4 /* Pods-FearTests */,
+				190FAA89D3D34BC6CEFEC2ADE34EE8CE /* Pods-FearUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01B99B20C7814DFF8BF174EE4C51D9C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A1CBCB42F13C83C43D6D6F295F29E34 /* AutomaticProperties.swift in Sources */,
+				FE5C6605142A4E95CFA762B8802B6527 /* Constants.swift in Sources */,
+				B59932658A059A1230E215F470082F22 /* Error.swift in Sources */,
+				66C9395478322B1DBB95099C325EB654 /* FileLogging.swift in Sources */,
+				A7A7B2ED6E22B4C4357EAAF3A1F633D1 /* Flush.swift in Sources */,
+				7C0C1424FD9B5E3CFEFBD2EDCB12627F /* FlushRequest.swift in Sources */,
+				A82FE0B23787C057E6DB45063744B38C /* JSONHandler.swift in Sources */,
+				262F8582DE4718DCAF48A6CE3CA02C19 /* Logger.swift in Sources */,
+				849B307259278A3A3A06601773D12F67 /* Mixpanel-swift-dummy.m in Sources */,
+				B68EF510EF521B6A02F8772BA736FE26 /* Mixpanel.swift in Sources */,
+				48E185C0F97C44550E32D81C31EFB021 /* MixpanelInstance.swift in Sources */,
+				CFD0A409E8F4B9798CFA72EAEC24521F /* Network.swift in Sources */,
+				D328D1B393ECD2284976EBFC51ECBC6B /* People.swift in Sources */,
+				B745E7DD1FCDD4947D1D2844FB23681A /* Persistence.swift in Sources */,
+				3BC21B77C6B310E015BD51732EA3BB20 /* PrintLogging.swift in Sources */,
+				60BEAF680DE64CF2DBE5A6CCD7CAE0F9 /* Track.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A238833F7AB7A08B0A569BCA4C4B4D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E5DAC8B7F6F680BB3A92644A61F0D13 /* Pods-FearUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAB81FECF9313A93514D797138BFE969 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6EDF5AF673F24A071C987A630C8EF82 /* Pods-FearTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9EF2630083C59D02ECA7B96BF9ACDE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D017EC3CB2CBB0A9B1C90D7193A6B2D6 /* Pods-Fear-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		65624BBE8E93BE6372B7C106787196AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Mixpanel-swift";
+			target = 33A15922D9CFBB1ED72A42B512587636 /* Mixpanel-swift */;
+			targetProxy = 379538DB89620C7A882A5E988CDF3E39 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2DB689998988BA07E67B7180BE0AD521 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9D903158D1DF96C772D5A578B1852FB /* Mixpanel-swift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Mixpanel-swift/Mixpanel-swift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Mixpanel-swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Mixpanel-swift/Mixpanel-swift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Mixpanel;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3FA451D268613890FA8A5A03801E11D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5E62115DE8C09934BF8D2FE5D15FED1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		7F3953389E02BD3FDD5A50BF8C02F454 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C764C414560803996FDD2ADCB768AB20 /* Pods-FearUITests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-FearUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FearUITests/Pods-FearUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FearUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8CA602BE1659924A4B35BA1B7339F5BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF47A904D2A867A7CCA76D31BCD7BE9F /* Pods-FearUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-FearUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FearUITests/Pods-FearUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FearUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A594363165E9FF082D65FDEDA31875C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B13D4E12E9B669B569FCF8B0A3A4A630 /* Pods-Fear.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Fear/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Fear/Pods-Fear.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Fear;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B1D49A6AA5DC3A9B922761FCE7D839DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D937450C9396842A404F1E85E36D8EB /* Pods-FearTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-FearTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FearTests/Pods-FearTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FearTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BE0670926A509D4B8F31B20B49AFC9F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9D903158D1DF96C772D5A578B1852FB /* Mixpanel-swift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Mixpanel-swift/Mixpanel-swift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Mixpanel-swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Mixpanel-swift/Mixpanel-swift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Mixpanel;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D3579C939512EB0D8B228D2DF1B182AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C828D55C0835E9EE9D667BE8C96F59E /* Pods-FearTests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-FearTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FearTests/Pods-FearTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FearTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FE7FB2DD1008592CE657BF0E03FCC375 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F463D65F99865443D6108E07D02BF38 /* Pods-Fear.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Fear/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Fear/Pods-Fear.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Fear;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		151B292451CE51CA17267C2A450AB68F /* Build configuration list for PBXNativeTarget "Mixpanel-swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DB689998988BA07E67B7180BE0AD521 /* Debug */,
+				BE0670926A509D4B8F31B20B49AFC9F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E62115DE8C09934BF8D2FE5D15FED1E /* Debug */,
+				3FA451D268613890FA8A5A03801E11D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3885644EB399CABCA5FA9D39EAF558BB /* Build configuration list for PBXNativeTarget "Pods-Fear" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A594363165E9FF082D65FDEDA31875C8 /* Debug */,
+				FE7FB2DD1008592CE657BF0E03FCC375 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		73ACE02BB90499FC8F4CD29FBAA1E2C6 /* Build configuration list for PBXNativeTarget "Pods-FearUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F3953389E02BD3FDD5A50BF8C02F454 /* Debug */,
+				8CA602BE1659924A4B35BA1B7339F5BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA62EB1E69DDCDE69C0710FB87ACF7AC /* Build configuration list for PBXNativeTarget "Pods-FearTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1D49A6AA5DC3A9B922761FCE7D839DE /* Debug */,
+				D3579C939512EB0D8B228D2DF1B182AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

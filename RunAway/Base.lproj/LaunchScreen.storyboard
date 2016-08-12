@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -14,14 +14,34 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="550" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="Default.png" translatesAutoresizingMaskIntoConstraints="NO" id="yZc-NN-7be">
+                                <rect key="frame" x="13" y="0.0" width="537" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="550" id="BGG-7I-CaN"/>
+                                    <constraint firstAttribute="height" constant="320" id="zMd-rI-Brv"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yZc-NN-7be" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="FMn-7g-HlC"/>
+                            <constraint firstItem="yZc-NN-7be" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="L2x-bl-7Vr"/>
+                            <constraint firstAttribute="trailing" secondItem="yZc-NN-7be" secondAttribute="trailing" id="PhX-zi-dBF"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="yZc-NN-7be" secondAttribute="bottom" id="iph-NS-R9G"/>
+                        </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="550" height="320"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="-531" y="587"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Default.png" width="550" height="320"/>
+    </resources>
 </document>

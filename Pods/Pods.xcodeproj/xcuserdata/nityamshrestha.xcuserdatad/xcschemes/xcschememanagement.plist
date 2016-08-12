@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Mixpanel-swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Fear.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-FearTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-FearUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>190FAA89D3D34BC6CEFEC2ADE34EE8CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>33A15922D9CFBB1ED72A42B512587636</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B021801CA596D736844F20D7FA62C4F4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B81624A6F3F13929144C06B0143FE88B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

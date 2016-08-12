@@ -9,6 +9,8 @@
 import SpriteKit
 import Foundation
 import AVFoundation
+import Mixpanel
+
 
 enum State{
     case Active, Paused, GameOver, LanternGlow
@@ -32,6 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }// used int instead of Bool -> unable to use bool
  
     var missionReport = MissionReport()
+    
     
     var gameState:State = .Paused
     var missionLabel: SKLabelNode!
@@ -82,7 +85,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var totalMegaLantern:Int = 0
     var totalJumps = 0
     var totalSlides = 0
-    var totalTrees = 0
     
     var jumpImpulse:CGFloat = 18
     var flameLabel:SKLabelNode!
@@ -112,9 +114,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let sound = SKAction.playSoundFileNamed("helter_Skelter11", waitForCompletion: false)
     var ghostSound:Bool = true
     
+    var myAudioPlayer: AVAudioPlayer!
     
     override func didMoveToView(view: SKView)
     {
+        let gameSoundPath = NSBundle.mainBundle().pathForResource("woo", ofType: "mp3")
+        if let gameSoundPaths = gameSoundPath
+        {
+            let gameSoundURL = NSURL(fileURLWithPath: gameSoundPaths)
+            do{
+                try myAudioPlayer = AVAudioPlayer(contentsOfURL: gameSoundURL)
+                myAudioPlayer.play()
+                if myAudioPlayer.play() == true{
+                    print("play here")
+                }
+            }
+            catch{
+                print("error")
+            }
+        }
+        
         
         physicsWorld.contactDelegate = self
         groundScroll = self.childNodeWithName("groundScroll")
@@ -160,19 +179,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if missionNumber == 0 { missionNumber = 1 }
         
         /* Swipe Gestures */
-        let swipeRight:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("swipedRight:"))
+        let swipeRight:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipedRight(_:)))
         swipeRight.direction = .Right
         view.addGestureRecognizer(swipeRight)
         
-        let swipeLeft:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("swipedLeft:"))
+        let swipeLeft:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipedLeft(_:)))
         swipeLeft.direction = .Left
         view.addGestureRecognizer(swipeLeft)
         
-        let swipeUp:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("swipedUp:"))
+        let swipeUp:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipedUp(_:)))
         swipeUp.direction = .Up
         view.addGestureRecognizer(swipeUp)
         
-        let swipeDown:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("swipedDown:"))
+        let swipeDown:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipedDown(_:)))
         swipeDown.direction = .Down
         view.addGestureRecognizer(swipeDown)
         
@@ -180,9 +199,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /* Reset Run Block */
         
             gameOverScene = SKAction.runBlock({
+            
+            self.myAudioPlayer.stop()
             self.isPlayed += 1
             let skView = self.view as SKView!
-            
+                
+            Mixpanel.mainInstance().track(event: "Deaths", properties: ["Score" : self.score])
+                
             let scene = GameOver(fileNamed: "GameOver") as GameOver!
             scene.score = self.score
             scene.levelCompelete = self.missionComplete
@@ -326,7 +349,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 hero.paused = false
                 if flameCount >= 10
                 {
-                    megaLantern.zPosition = 3
+                    megaLantern.zPosition = 5
                     lanternFlame.zPosition = 2
                     flamepic.zPosition = -1
                     flameLabel.zPosition = -1
@@ -461,16 +484,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }else if missionNumber == 6
         {
             return missionReport.missionCheck(missionNumber, value: totalFlameCount)
-        }else if missionNumber == 7
-        {
-            return missionReport.missionCheck(missionNumber, value: totalTrees)
-        }else if missionNumber == 8
+        }
+//            else if missionNumber == 7
+//        {
+//            return missionReport.missionCheck(missionNumber, value: totalTrees)
+//        }
+    else if missionNumber == 7
         {
             return missionReport.missionCheck(missionNumber, value: totalJumps)
-        }else if missionNumber == 9
+        }else if missionNumber == 8
         {
             return missionReport.missionCheck(missionNumber, value: totalSlides)
-        }else if missionNumber == 10
+        }else if missionNumber == 9
         {
             return missionReport.missionCheck(missionNumber, value: 1)
         }else
@@ -487,6 +512,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         if gameState == .GameOver{
+            self.myAudioPlayer.stop()
             hero.removeAllActions()
             groundScroll.removeAllActions()
             cloudScroll.removeAllActions()
@@ -774,6 +800,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ghost.removeActionForKey("creepIn")
         
         ghostSpawnTimer = x
+        
+        if x < -2
+        {
+          scoreCounter = -30
+        }
       // setting the background back to normal
         backPart11.runAction(SKAction.fadeInWithDuration(2))
         backPart10.runAction(SKAction.fadeInWithDuration(2))
@@ -913,7 +944,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else if x == 4
         {
             resourcePath = NSBundle.mainBundle().pathForResource("Box2", ofType: "sks")
-            totalTrees += 1
             box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath))
             box.position = self.convertPoint(CGPoint(x: 600, y: 108), toNode: groundScroll)
             box.setScale(0.75)
@@ -924,7 +954,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // flying box if x == 5
             resourcePath = NSBundle.mainBundle().pathForResource("Bats", ofType: "sks")
             box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath))
-            
             box.position = self.convertPoint(CGPoint(x: 600, y: 68), toNode: groundScroll)
             box.setScale(1.5)
         }
@@ -992,7 +1021,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         treeScroll.addChild(tree)
         }
 
-        treeScroll.position.x -= scrollSpeed * CGFloat(fixedDelta)*1.5
+        treeScroll.position.x -= scrollSpeed * CGFloat(fixedDelta) * 2
         
     }
     

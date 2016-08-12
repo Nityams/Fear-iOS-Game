@@ -1,14 +1,12 @@
 PODS:
-  - Mixpanel (3.0.2):
-    - Mixpanel/Mixpanel (= 3.0.2)
-  - Mixpanel/Mixpanel (3.0.2)
+  - Mixpanel-swift (1.0.0)
 
 DEPENDENCIES:
-  - Mixpanel
+  - Mixpanel-swift
 
 SPEC CHECKSUMS:
-  Mixpanel: 0e4f1f9a2ac612b589b2894830038418c2587428
+  Mixpanel-swift: f35c35756e2122a8dbd9bd2f0e27441fc7a02e33
 
-PODFILE CHECKSUM: 3244e9a0aeb21fc6a93a48a6001eeed268153f91
+PODFILE CHECKSUM: 8079f2bee95823e2e951ebd66c13e619e93df9ec
 
 COCOAPODS: 1.0.1

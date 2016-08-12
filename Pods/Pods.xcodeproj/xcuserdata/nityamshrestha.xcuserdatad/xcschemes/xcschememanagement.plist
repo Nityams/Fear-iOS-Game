@@ -4,22 +4,22 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Mixpanel.xcscheme</key>
+		<key>Mixpanel-swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-RunAway.xcscheme</key>
+		<key>Pods-Fear.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-RunAwayTests.xcscheme</key>
+		<key>Pods-FearTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-RunAwayUITests.xcscheme</key>
+		<key>Pods-FearUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>408A9C525344B740E9DC038EBF0136BD</key>
+		<key>190FAA89D3D34BC6CEFEC2ADE34EE8CE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4201C432873969AE0F2AA91002D1A224</key>
+		<key>33A15922D9CFBB1ED72A42B512587636</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8EFE724FDDAA2478F44F082C05BA272C</key>
+		<key>B021801CA596D736844F20D7FA62C4F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C3863FC2AB9FA346662ED96C68527118</key>
+		<key>B81624A6F3F13929144C06B0143FE88B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

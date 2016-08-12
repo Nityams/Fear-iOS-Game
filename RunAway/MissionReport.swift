@@ -13,13 +13,12 @@ class MissionReport{
     
     /*
      MISSION REPORT:
-    1) Get 7 flames
-     2) Get 7 lanterns
-     3) Deploy 1 mega lantern
-     4) Deploy 5 mega Lantern
+     
      5) Cross distance of 150
-     6) Collect 25 flames
-     7) Slide under 15 trees
+     1) Get 5 flames
+     3) Deploy 1 mega lantern
+     2) Get 7 lanterns
+     4) Deploy 3 mega Lantern
      8) Jump 200 times
      9) Slide 100 times
      10) Buy powerup from pack
@@ -45,16 +44,16 @@ class MissionReport{
         case 6:
             print("Collect 25 flames")
             return "Collect 25 flames"
+//        case 7:
+//            print("Slide under 15 trees")
+//            return "Slide under 15 trees"
         case 7:
-            print("Slide under 15 trees")
-            return "Slide under 15 trees"
-        case 8:
             print("Jump 200 times")
             return "Jump 200 times"
-        case 9:
+        case 8:
             print("Slide 100 times")
             return "Slide 100 times"
-        case 10:
+        case 9:
             print("Buy powerup from pack")
             return "Buy powerup from pack"
         default:

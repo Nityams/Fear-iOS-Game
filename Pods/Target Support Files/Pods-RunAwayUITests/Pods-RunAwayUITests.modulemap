@@ -1,6 +1,0 @@
-framework module Pods_RunAwayUITests {
-  umbrella header "Pods-RunAwayUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,6 +1,6 @@
 //
 //  MissionReport.swift
-//  RunAway
+//  Fear
 //
 //  Created by Nityam Shrestha on 8/2/16.
 //  Copyright © 2016 nityamshrestha.com. All rights reserved.
@@ -10,10 +10,8 @@ import Foundation
 
 class MissionReport{
     
-    
     /*
      MISSION REPORT:
-     
      5) Cross distance of 150
      1) Get 5 flames
      3) Deploy 1 mega lantern
@@ -22,6 +20,8 @@ class MissionReport{
      8) Jump 200 times
      9) Slide 100 times
      10) Buy powerup from pack
+     
+     note: Order not concrete yet.
     */
     func getMission(number : Int) -> String
     {
@@ -44,9 +44,6 @@ class MissionReport{
         case 6:
             print("Collect 25 flames")
             return "Collect 25 flames"
-//        case 7:
-//            print("Slide under 15 trees")
-//            return "Slide under 15 trees"
         case 7:
             print("Jump 200 times")
             return "Jump 200 times"

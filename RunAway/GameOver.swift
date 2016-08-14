@@ -1,6 +1,6 @@
 //
 //  GameOver.swift
-//  RunAway
+//  Fear
 //
 //  Created by Nityam Shrestha on 8/3/16.
 //  Copyright © 2016 nityamshrestha.com. All rights reserved.

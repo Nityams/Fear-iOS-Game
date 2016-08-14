@@ -1,6 +1,6 @@
 //
 //  GameScene.swift
-//  RunAway
+//  Fear
 //
 //  Created by Nityam Shrestha on 7/18/16.
 //  Copyright (c) 2016 nityamshrestha.com. All rights reserved.
@@ -11,7 +11,9 @@ import Foundation
 import AVFoundation
 import Mixpanel
 
-
+/*
+ Game States
+ */
 enum State{
     case Active, Paused, GameOver, LanternGlow
 }
@@ -19,6 +21,9 @@ enum State{
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    /*
+     missionNumber: this number gets stored in the user's device
+     */
     var missionNumber:Int = NSUserDefaults.standardUserDefaults().integerForKey("mNumber") {
         didSet {
             NSUserDefaults.standardUserDefaults().setInteger(missionNumber, forKey:"mNumber")
@@ -32,16 +37,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }// used int instead of Bool -> unable to use bool
- 
+    
     var missionReport = MissionReport()
-    
-    
+    var missionComplete: Bool = false
     var gameState:State = .Paused
     var missionLabel: SKLabelNode!
     var missionBoard:SKSpriteNode!
-    var missionHide: SKAction!
-    var missionComplete: Bool = false
-    var menuScene: SKAction!
     var menuBtn: SKSpriteNode!
     var groundScroll: SKNode!
     var cloudScroll: SKNode!
@@ -49,8 +50,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var treeScroll: SKNode!
     var hero: SKSpriteNode!
     var ghost: SKSpriteNode!
-    
-    
+    var myBox:SKSpriteNode!
+    var flameLabel:SKLabelNode!
+    var flamepic: SKNode!
+    var flameLabels: SKLabelNode!
     // background effect
     var backPart1: SKSpriteNode!
     var backPart2: SKSpriteNode!
@@ -66,37 +69,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var backPart12: SKSpriteNode!
     var backPart13: SKSpriteNode!
     var backPart14: SKSpriteNode!
-    
+    // Timer Variables
     var potionSpawnTimer: CFTimeInterval = 0
     var lanternSpawnTimer: CFTimeInterval = 0
     var ghostSpawnTimer: CFTimeInterval = -5
     var boostSpawnTimer: CFTimeInterval = 0
     var generalLanternTimeCounter:CFTimeInterval = 23
     
-    var originalGravity:CGFloat!
-    
     let ghostOriginalPos:CGPoint = CGPoint(x: -54, y: 89.963)
-    
-    var myBox:SKSpriteNode!
-    
+    // Counters for mission
     var flameCount:Int = 0
     var totalFlameCount:Int = 0
     var totalLanterns:Int = 0
     var totalMegaLantern:Int = 0
     var totalJumps = 0
     var totalSlides = 0
-    
+    // Game physics vairables
     var jumpImpulse:CGFloat = 18
-    var flameLabel:SKLabelNode!
-    var flamepic: SKNode!
-    var flameLabels: SKLabelNode!
-    
+    var isAtGround: Bool = true
+    //Node effects
     var megaLantern:SKSpriteNode!
     var lanternFlame: SKEmitterNode!
     var heroLight: SKLightNode!
     var light1: SKLightNode!
     var light2: SKLightNode!
-    
+    // Parallax speed
     var scrollSpeed:CGFloat = 230
     var backSpeed: CGFloat = 0
     var cloudSpeed: CGFloat = 0
@@ -108,13 +105,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreCounter = 0
     var scoreLabel:SKLabelNode!
     
-    var isAtGround: Bool = true
-    
     var gameOverScene:SKAction!
+    var missionHide: SKAction!
+    var menuScene: SKAction!
+    // Sound effects
+    var myAudioPlayer: AVAudioPlayer!
     let sound = SKAction.playSoundFileNamed("helter_Skelter11", waitForCompletion: false)
     var ghostSound:Bool = true
-    
-    var myAudioPlayer: AVAudioPlayer!
     
     override func didMoveToView(view: SKView)
     {
@@ -126,7 +123,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 try myAudioPlayer = AVAudioPlayer(contentsOfURL: gameSoundURL)
                 myAudioPlayer.play()
                 if myAudioPlayer.play() == true{
-                    print("play here")
                 }
             }
             catch{
@@ -141,26 +137,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backScroll = self.childNodeWithName("backScroll")
         treeScroll = self.childNodeWithName("treeScroll")
         menuBtn = self.childNodeWithName("//menubtn") as! SKSpriteNode
-        
         megaLantern = self.childNodeWithName("//lanternBig") as! SKSpriteNode
         lanternFlame = self.childNodeWithName("//lanternFlame") as! SKEmitterNode
-
         heroLight = self.childNodeWithName("//heroLight") as! SKLightNode
         light1 = self.childNodeWithName("light1") as! SKLightNode
         light2 = self.childNodeWithName("light2") as! SKLightNode
-        
-        
         hero = self.childNodeWithName("//hero") as! SKSpriteNode
         ghost = self.childNodeWithName("//ghost") as! SKSpriteNode
         scoreLabel = self.childNodeWithName("scoreLabel") as! SKLabelNode
         flameLabel = self.childNodeWithName("flameLabel") as! SKLabelNode
         flamepic = self.childNodeWithName("flamePic")
         flameLabels = self.childNodeWithName("flameLabels") as! SKLabelNode
-        
-
         missionLabel = self.childNodeWithName("//missionLabel") as! SKLabelNode
         missionBoard = self.childNodeWithName("missionBoard") as! SKSpriteNode
-        
         /* background color effects */
         backPart1 = self.childNodeWithName("part1") as! SKSpriteNode
         backPart2 = self.childNodeWithName("part2") as! SKSpriteNode
@@ -176,7 +165,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         restoreActions()
         
-        if missionNumber == 0 { missionNumber = 1 }
+        if missionNumber == 0
+        {
+            missionNumber = 1
+        }
         
         /* Swipe Gestures */
         let swipeRight:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(GameScene.swipedRight(_:)))
@@ -196,16 +188,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         view.addGestureRecognizer(swipeDown)
         
         
-        /* Reset Run Block */
-        
-            gameOverScene = SKAction.runBlock({
-            
+        /* GameOver Run Block */
+        gameOverScene = SKAction.runBlock({
             self.myAudioPlayer.stop()
             self.isPlayed += 1
             let skView = self.view as SKView!
-                
             Mixpanel.mainInstance().track(event: "Deaths", properties: ["Score" : self.score])
-                
             let scene = GameOver(fileNamed: "GameOver") as GameOver!
             scene.score = self.score
             scene.levelCompelete = self.missionComplete
@@ -213,7 +201,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             skView.presentScene(scene)
         })
         
-        
+        /* Main Menu Run Block */
         menuScene = SKAction.runBlock({
             let skView = self.view as SKView!
             let scene = MainMenu(fileNamed: "MainMenu") as MainMenu!
@@ -221,27 +209,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             skView.presentScene(scene)
         })
         
+        /* Tutorial Run Block */
         let tutorialScene = SKAction.runBlock({
-           
             let skView = self.view as SKView!
             let scene = Tut(fileNamed:"Tut") as Tut!
             scene.scaleMode = .AspectFit
             skView.presentScene(scene)
         })
         
+        // Check if played ever before to show the tutorial scene
         if self.isPlayed == 0
         {
-            print("is Played: \(isPlayed)")
             self.isPlayed += 1
             self.runAction(tutorialScene)
         }
     }
     
     func swipedRight(sender:UISwipeGestureRecognizer){
-        print("Swipped Right here")
     }
     func swipedLeft(sender:UISwipeGestureRecognizer){
-        print("Swipped Left here")
     }
     
     func swipedUp(sender:UISwipeGestureRecognizer){
@@ -259,22 +245,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func swipedDown(sender:UISwipeGestureRecognizer)
     {
         heroSlide()
-        print("Down swipped")
     }
     
     func restoreActions()
     {
-        print("restored")
         hero.paused = false
         hero.yScale = 1
         hero.xScale = 1
-        
         let runTexture = SKTexture(imageNamed: "punk0" )
         hero.texture = runTexture
-        
         hero.physicsBody = SKPhysicsBody.init(rectangleOfSize: CGSize.init(width: 45, height: 50), center: CGPoint(x: -2.3, y: -5))
         hero.size.height = 76
-            hero.size.width = 76
+        hero.size.width = 76
         hero.physicsBody?.affectedByGravity = true;
         hero.physicsBody?.dynamic = true;
         hero.physicsBody?.allowsRotation = false;
@@ -282,14 +264,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hero.physicsBody?.collisionBitMask = 6
         hero.physicsBody?.contactTestBitMask = 14
         hero.physicsBody?.mass = 0.0374875403940678
- 
+        
     }
     
     func heroSlide()
     {
         hero.paused = true
         let slideTexture =  SKTexture(imageNamed: "runSlide1")
-        
         hero.physicsBody = SKPhysicsBody.init(rectangleOfSize: CGSize.init(width: 48.0, height: 15.0), center: CGPoint(x: 0, y: -8))
         hero.physicsBody?.affectedByGravity = true;
         hero.physicsBody?.dynamic = true;
@@ -298,14 +279,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hero.physicsBody?.collisionBitMask = 6
         hero.physicsBody?.contactTestBitMask = 14
         hero.physicsBody?.mass = 0.0374875403940678
- 
         hero.texture = slideTexture
         hero.xScale = 0.96
         hero.yScale = 0.96
-        
         totalSlides += 1
-        
-        print("hero texture changed")
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
@@ -316,12 +293,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 if missionBoard.position.y <= 350
                 {
-                   missionBoard.runAction(missionHide)
+                    missionBoard.runAction(missionHide)
                 }
-                    gameState = .Active
-                    unpauseHero()
-                    ghost.paused = false
-                    ghostCreepIn()
+                gameState = .Active
+                unpauseHero()
+                ghost.paused = false
+                ghostCreepIn()
                 
                 let pt = touch.locationInNode(self)
                 if (nodeAtPoint(pt).name == "menu" || nodeAtPoint(pt) == menuBtn)
@@ -342,10 +319,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if (nodeAtPoint(pt).name == "pauseButton")
                 {
                     menuBtn.runAction(SKAction.moveToX(135, duration: 0.4))
-                   gameState = .Paused
+                    gameState = .Paused
                     return
                 }
-
+                
                 hero.paused = false
                 if flameCount >= 10
                 {
@@ -363,8 +340,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         flameCount = 0
                         if flameCount < 10
                         {
-                        megaLantern.zPosition = -1
-                        lanternFlame.zPosition = -1
+                            megaLantern.zPosition = -1
+                            lanternFlame.zPosition = -1
                             flamepic.zPosition = 3
                             flameLabel.zPosition = 3
                             flameLabels.zPosition = 3
@@ -379,14 +356,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         hero.paused = true
         missionLabel.text = missionReport.getMission(missionNumber)
-        print("mission number: \(missionNumber)")
-        print("missionLabel: \(missionLabel.text)")
         let missionShow = SKAction.moveToY(250, duration: 0.3)
         missionHide = SKAction.moveToY(475, duration: 0.3)
         missionBoard.runAction(missionShow)
-        
         gameState = .Paused
-        print("\(missionBoard.position.x)")
     }
     func heroJump()
     {
@@ -398,6 +371,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             totalJumps += 1
         }
     }
+    /*
+     func lightsDrama: Light effects on the game
+     @parem: Int x : int corresponding to the ghost's position
+    */
     
     func lightsDrama(x: Int)
     {
@@ -407,8 +384,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             backPart1.runAction(SKAction.fadeOutWithDuration(2))
         case 2:
             if ghostSound == true{
-            ghost.runAction(sound)
-            ghostSound = false
+                ghost.runAction(sound)
+                ghostSound = false
             }
             backPart2.runAction(SKAction.fadeOutWithDuration(2))
         case 3:
@@ -419,19 +396,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             backPart4.runAction(SKAction.fadeOutWithDuration(2))
         case 5:
             backPart5.runAction(SKAction.fadeOutWithDuration(2))
-             light1.falloff += 0.5
+            light1.falloff += 0.5
         case 6:
             backPart6.runAction(SKAction.fadeOutWithDuration(2))
-             light2.falloff += 0.5
+            light2.falloff += 0.5
         case 7:
             backPart7.runAction(SKAction.fadeOutWithDuration(2))
-           
+            
         case 8:
             backPart8.runAction(SKAction.fadeOutWithDuration(2))
             light2.falloff += 0.5
         case 9:
             backPart9.runAction(SKAction.fadeOutWithDuration(2))
-           
+            
         case 10:
             backPart10.runAction(SKAction.fadeOutWithDuration(2))
             
@@ -485,11 +462,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             return missionReport.missionCheck(missionNumber, value: totalFlameCount)
         }
-//            else if missionNumber == 7
-//        {
-//            return missionReport.missionCheck(missionNumber, value: totalTrees)
-//        }
-    else if missionNumber == 7
+        else if missionNumber == 7
         {
             return missionReport.missionCheck(missionNumber, value: totalJumps)
         }else if missionNumber == 8
@@ -506,9 +479,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: CFTimeInterval)
     {
         if gameState == .Paused{
-              showMission()
-                pauseHero()
-                pauseGhost()
+            showMission()
+            pauseHero()
+            pauseGhost()
             return
         }
         if gameState == .GameOver{
@@ -524,12 +497,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if missionComplete == true{
                 missionNumber += 1
             }
-            
-            print("flames \(totalFlameCount)")
-            print("lanterns \(totalLanterns)")
-            print("megalanterns \(totalMegaLantern)")
-            print("slides \(totalSlides)")
-            print("jump \(totalJumps)")
             
             let scene = HighScore(fileNamed: "HighScoreScene") as HighScore!
             if scene.distance < score
@@ -590,9 +557,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {//do nothing
             }
             
-           /* potion count */
+            /* flame count */
             flameLabel.text = String (flameCount)
-    
+            
             if (score % 69 == 0 && scrollSpeed < 800)
             {
                 scrollSpeed += 65
@@ -600,15 +567,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 score += 1
             }
             scoreLabel.text = String(score)
-
-            //if hero.parent?.position.x < -20
+            
             if hero.position.x < -370
             {
                 gameState = .GameOver
                 return;
             }
             
-            if hero.parent?.position.x > 300 // make this dynamic screen size
+            if hero.parent?.position.x > 300
             {
                 let heroLimit =  SKAction.moveToX((hero.parent?.position.x)! - 100, duration: 1)
                 hero.runAction(heroLimit)
@@ -623,7 +589,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 let randomNumber = Int(arc4random_uniform(UInt32(20)))
                 print("randomnumber: \(randomNumber)")
-//                let randomNumber = 6
                 
                 if randomNumber >= 18
                 {
@@ -685,8 +650,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         if nodeA.name == "ground" || nodeB.name == "ground"
         {
-            //    print("ground")
-            
             isAtGround = true;
             if hero.xScale < 1
             {
@@ -753,10 +716,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      */
     func heroPowerUp(ghostTimer: CFTimeInterval)
     {
-        
-        // add effects of bright glow
-        // world brightness = current.brightness + 30, not fully bright, i.e done by superLantern
-        
         /* Effects #1 */
         // world pause
         hero.paused = true
@@ -780,6 +739,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreCounter = 1
         obstacleDisappear()
     }
+    
     func resume()
     {
         hero.paused = false
@@ -803,9 +763,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if x < -2
         {
-          scoreCounter = -30
+            scoreCounter = -30
         }
-      // setting the background back to normal
+        // setting the background back to normal
         backPart11.runAction(SKAction.fadeInWithDuration(2))
         backPart10.runAction(SKAction.fadeInWithDuration(2))
         backPart9.runAction(SKAction.fadeInWithDuration(2))
@@ -817,9 +777,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backPart3.runAction(SKAction.fadeInWithDuration(2))
         backPart2.runAction(SKAction.fadeInWithDuration(2))
         backPart1.runAction(SKAction.fadeInWithDuration(2))
-        
-        
-        
     }
     
     func ghostCreepIn()
@@ -836,7 +793,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if let _ = node as? SKSpriteNode
             {
-                "do nothing"
+                // "do nothing"
             }else
             {
                 let obstacleFadeOut = SKAction.fadeOutWithDuration(0.9)
@@ -860,9 +817,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         if ghostSpawnTimer > 2  //ghost Spawn
         {
-            print("Ghost Move: \(ghost.position.x)")
             ghostCreepIn()
-            //  print("Ghost After Move \(ghost.position.x)")
             ghostSpawnTimer = 0
         }
         
@@ -874,14 +829,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let box = SKReferenceNode(URL: NSURL(fileURLWithPath: resourchPath!))
                 box.position = self.convertPoint(CGPoint(x: 600, y: 176), toNode: groundScroll)
                 groundScroll.addChild(box)
-                
-                //
                 potionSpawnTimer = 0
                 return
             }
         }
         
-        if flameCount < 10            // i.e, if SuperLantern is complete== less regular lantern
+        if flameCount < 10            // i.e, if SuperLantern is complete => less frequent regular lantern
         {
             generalLanternTimeCounter = 19
             
@@ -961,18 +914,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    /* functions for parallax effects and removing unwanted child from scroller*/
+    
     func updateGroundScroll()
     {
         groundScroll.position.x -= scrollSpeed * CGFloat(fixedDelta)
         for node in groundScroll.children as [SKNode]
         {
-            
             if let ground = node as? SKSpriteNode {
                 let groundposition = groundScroll.convertPoint(ground.position, toNode: self)
                 if groundposition.x <= -ground.size.width/2
                 {
-                   // let newPosition = CGPointMake((self.size.width/2) + ground.size.width - 10 , groundposition.y)
-                   let newPosition = CGPointMake(self.size.width * 1.5, groundposition.y)
+                    let newPosition = CGPointMake(self.size.width * 1.5, groundposition.y)
                     ground.position = self.convertPoint(newPosition, toNode: groundScroll)
                 }
             }
@@ -981,8 +934,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func updateCloudScroll()
     {
         cloudSpeed = scrollSpeed * 0.1
-        
         cloudScroll.position.x -= cloudSpeed * CGFloat(fixedDelta)
+        
         for ground in cloudScroll.children as! [SKSpriteNode]
         {
             let groundposition = cloudScroll.convertPoint(ground.position, toNode: self)
@@ -998,7 +951,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         
         backSpeed = scrollSpeed * 0.3
-        
         backScroll.position.x -= backSpeed * CGFloat(fixedDelta)
         
         for ground in backScroll.children as! [SKSpriteNode]
@@ -1014,13 +966,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func updateTrees()
     {
         if scoreCounter % 437 == 39
-    {
-        let resourcePath = NSBundle.mainBundle().pathForResource("Tree", ofType: "sks")
-        let tree = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath!))
-        tree.position = self.convertPoint(CGPoint(x: 600, y: 0), toNode: treeScroll)
-        treeScroll.addChild(tree)
+        {
+            let resourcePath = NSBundle.mainBundle().pathForResource("Tree", ofType: "sks")
+            let tree = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath!))
+            tree.position = self.convertPoint(CGPoint(x: 600, y: 0), toNode: treeScroll)
+            treeScroll.addChild(tree)
         }
-
         treeScroll.position.x -= scrollSpeed * CGFloat(fixedDelta) * 2
         
     }

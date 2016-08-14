@@ -1,6 +1,6 @@
 //
 //  MainMenu.swift
-//  RunAway
+//  Fear
 //
 //  Created by Nityam Shrestha on 8/5/16.
 //  Copyright © 2016 nityamshrestha.com. All rights reserved.
@@ -19,9 +19,6 @@ class MainMenu:SKScene{
     var myAudioPlayer:AVAudioPlayer!
     override func didMoveToView(view: SKView)
     {
-//        let mySounds = SKAction.playSoundFileNamed("Dusty Authority", waitForCompletion: false)
-//        self.runAction(mySounds)
-        
         let gameSoundPath = NSBundle.mainBundle().pathForResource("Dusty Authority", ofType: "mp3")
         if let gameSoundPaths = gameSoundPath
         {
@@ -37,6 +34,8 @@ class MainMenu:SKScene{
                 print("error")
             }
         }
+        
+        /* scene run blocks */
         
         startGame = SKAction.runBlock({
             self.myAudioPlayer.stop()

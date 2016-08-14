@@ -1,6 +1,6 @@
 //
 //  HighScore.swift
-//  RunAway
+//  Fear
 //
 //  Created by Nityam Shrestha on 8/5/16.
 //  Copyright © 2016 nityamshrestha.com. All rights reserved.
@@ -11,6 +11,7 @@ import SpriteKit
 
 class HighScore: SKScene {
     
+    /* Storing distance and score on user's device */
     var distance:Int = NSUserDefaults.standardUserDefaults().integerForKey("distance") ?? 0 {
         didSet {
             NSUserDefaults.standardUserDefaults().setInteger(distance, forKey:"distance")
@@ -48,8 +49,6 @@ class HighScore: SKScene {
             scene.scaleMode = .AspectFit
             skview.presentScene(scene)
         })
-        
-        //resetAct
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -78,7 +77,8 @@ class HighScore: SKScene {
                 scene.missionNumber = 1
                 confirmBoard.runAction(SKAction.moveToY(450 , duration: 0.2))
             }
-            else{
+            else
+            {
                 return
             }
         }

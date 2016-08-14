@@ -1,6 +1,6 @@
 //
 //  Tut.swift
-//  RunAway
+//  Fear
 //
 //  Created by Nityam Shrestha on 8/9/16.
 //  Copyright © 2016 nityamshrestha.com. All rights reserved.
@@ -8,7 +8,9 @@
 
 import Foundation
 import SpriteKit
-
+/*
+ Scene accessed only sfor the first time gameplay
+ */
 class Tut: SKScene {
     var startGame:SKAction!
     
